@@ -67,11 +67,12 @@ namespace HueLamp
                         ));
                 }
             };
+            lamps[0].SetHSBValue(1200, 100, 254);
         }
 
-        public async void setLightPower(int lightid, Boolean state)
+        public async void sendCommando(string lightid, string json)
         {
-            await nw.PutCommand("api/" + apikey + "/lights/" + lightid+"/state", "{ \"on\": \""+state+"\"}");
+            await nw.PutCommand("api/" + apikey + "/lights/" + lightid+"/state", json);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,12 @@ namespace HueLamp
 {
     class HueLamp
     {
+        private HueHandler hh;
         public string id;
         public string OnLamp;
-        public string BrightnesLamp;
-        public string ColorLamp;
-        public string Sat;
+        public int BrightnesLamp;
+        public int ColorLamp;
+        public int Sat;
         public string x;
         public string y;
         public string CT;
@@ -28,11 +30,12 @@ namespace HueLamp
         public HueLamp(HueHandler hh, string id, string OnLamp, string BrightnesLamp, string ColorLamp, string Sat, string x, string y,string CT,
             string alert, string effect, string colormode, string reachable, string type, string name, string modelid, string swversion)
         {
+            this.hh = hh;
             this.id = id;
             this.OnLamp = OnLamp;
-            this.BrightnesLamp = BrightnesLamp;
-            this.ColorLamp = ColorLamp;
-            this.Sat = Sat;
+            this.BrightnesLamp = Int32.Parse(BrightnesLamp);
+            this.ColorLamp = Int32.Parse(ColorLamp);
+            this.Sat = Int32.Parse(Sat);
             this.x = x;
             this.y = y;
             this.CT = CT;
@@ -44,7 +47,28 @@ namespace HueLamp
             this.name = name;
             this.modelid = modelid;
             this.swversion = swversion;
+        }
 
+        public void SetHSBValue(int h, int s, int b)
+        {
+            dynamic jsonObject = new JObject();
+            if(h != ColorLamp)
+            {
+                ColorLamp = h;
+                jsonObject.hue = ColorLamp;
+            }
+            if(s != Sat)
+            {
+                Sat = s;
+                jsonObject.sat = Sat;
+            }
+            if(b != BrightnesLamp)
+            {
+                BrightnesLamp = b;
+                jsonObject.bri = BrightnesLamp;
+            }
+            String json = ((object)jsonObject).ToString();
+            hh.sendCommando(id, json);
         }
     }
 
