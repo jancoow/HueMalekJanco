@@ -39,7 +39,7 @@ namespace HueLamp
 
         public async void InitLights()
         {
-            if (await createUser("hueapplication") == true)
+            if ((await createUser("hueapplication")) == true)
             {
                 String jsonreturn = await nw.GetCommand("api/" + apikey + "/lights");
                 JArray array = JArray.Parse("[" + jsonreturn + "]");
@@ -67,7 +67,6 @@ namespace HueLamp
                         ));
                 }
             };
-            lamps[0].SetHSBValue(1200, 100, 254);
         }
 
         public async void sendCommando(string lightid, string json)
