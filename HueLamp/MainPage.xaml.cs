@@ -23,19 +23,12 @@ namespace HueLamp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public List<Button> ButtonCollection { get; set; }
+
         public MainPage()
         {
-            new HueHandler();
+            HueHandler hh = new HueHandler();
             this.InitializeComponent();
-           
-            ButtonCollection = new List<Button>();
-
-            ButtonCollection.Add(new Button() { Height = 50, Width = 50});
-            ButtonCollection.Add(new Button() { Height = 50, Width = 50 });
-            ButtonCollection.Add(new Button() { Height = 50, Width = 50 });
-            ButtonCollection.Add(new Button() { Height = 50, Width = 50 });
-            this.DataContext = this;
+            DataContext = new MainViewModel(hh);
         }
     }
 }

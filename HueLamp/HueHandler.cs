@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,13 @@ namespace HueLamp
     class HueHandler
     {
         NetworkHandler nw;
-        List<HueLamp> lamps;
+        public ObservableCollection<HueLamp> lamps;
         string apikey;
 
         public HueHandler()
         {
             nw = new NetworkHandler("localhost", "8000");
-            lamps = new List<HueLamp>();
+            lamps = new ObservableCollection<HueLamp>();
             InitLights();
         }
 

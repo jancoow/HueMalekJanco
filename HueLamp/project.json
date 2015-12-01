@@ -5,7 +5,8 @@
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Newtonsoft.Json": "7.0.1",
-    "Q42.HueApi": "2.0.2"
+    "Q42.HueApi": "2.0.2",
+    "template10": "1.0.8"
   },
   "frameworks": {
     "uap10.0": {}

@@ -10,7 +10,6 @@ namespace HueLamp
     public static class ColorUtil
     {
 
-
         public static void RGBtoHSV(double r, double g, double b, out double h, out double s, out double v)
         {
             double min, max, delta;

@@ -11,7 +11,7 @@ namespace HueLamp
     {
         private HueHandler hh;
         public string id;
-        public Boolean OnLamp;
+        public Boolean OnLamp { get; set; }
         public int BrightnesLamp;
         public int ColorLamp;
         public int Sat;
@@ -23,7 +23,7 @@ namespace HueLamp
         public string colormode;
         public string reachable;
         public string type;
-        public string name;
+        public string name { get; set; }
         public string modelid;
         public string swversion;
 
