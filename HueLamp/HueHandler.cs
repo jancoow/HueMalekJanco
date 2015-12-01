@@ -66,6 +66,7 @@ namespace HueLamp
                         citem["swversion"].ToString()
                         ));
                 }
+                lamps[0].setRGBValue(0, 255, 0);
             };
         }
 

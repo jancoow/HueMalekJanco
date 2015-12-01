@@ -57,56 +57,19 @@ namespace HueLamp
                 hh.sendCommando(id, "{\"on\":"+state+"}");
             }
         }
-        
         public void setRGBValue(float r, float g, float b)
         {
-            double[] normalizedToOne = new double[3];
-            normalizedToOne[0] = (r / 255);
-            normalizedToOne[1] = (g / 255);
-            normalizedToOne[2] = (b / 255);
-            float red, green, blue;
-
-            if (normalizedToOne[0] > 0.04045)
-            {
-                red = (float)Math.Pow(
-                        (normalizedToOne[0] + 0.055) / (1.0 + 0.055), 2.4);
-            }
-            else
-            {
-                red = (float)(normalizedToOne[0] / 12.92);
-            }
-
-            if (normalizedToOne[1] > 0.04045)
-            {
-                green = (float)Math.Pow((normalizedToOne[1] + 0.055)
-                        / (1.0 + 0.055), 2.4);
-            }
-            else
-            {
-                green = (float)(normalizedToOne[1] / 12.92);
-            }
-
-            if (normalizedToOne[2] > 0.04045)
-            {
-                blue = (float)Math.Pow((normalizedToOne[2] + 0.055)
-                        / (1.0 + 0.055), 2.4);
-            }
-            else
-            {
-                blue = (float)(normalizedToOne[2] / 12.92);
-            }
-
-            float X = (float)(red * 0.649926 + green * 0.103455 + blue * 0.197109);
-            float Y = (float)(red * 0.234327 + green * 0.743075 + blue * 0.022598);
-            float Z = (float)(red * 0.0000000 + green * 0.053077 + blue * 1.035763);
-
-            float x = X / (X + Y + Z);
-            float y = Y / (X + Y + Z);
-
-            hh.sendCommando(id, "{ \"xy\":[" + x + ", " + y + "]}");
+            double h, s, v;
+            ColorUtil.RGBtoHSV(r, g, b, out h, out s, out v);
+            SetHSLValue((int)((h/360.0f)*65535.0f), (int)s*254, (int)v-1);
         }
 
-        public void SetHSBValue(int h, int s, int b)
+        public void getRGBValue(out double r, out double g, out double b)
+        {
+            ColorUtil.RGBtoHSV(ColorLamp, Sat, BrightnesLamp, out r, out g, out b);
+        }
+
+        public void SetHSLValue(int h, int s, int b)
         {
             dynamic jsonObject = new JObject();
             if(h != ColorLamp)
