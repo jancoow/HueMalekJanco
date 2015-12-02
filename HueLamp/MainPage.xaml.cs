@@ -30,5 +30,33 @@ namespace HueLamp
             this.InitializeComponent();
             DataContext = new MainViewModel(hh);
         }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            MySplitview.IsPaneOpen = !MySplitview.IsPaneOpen;
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Lights.IsSelected)
+            {
+                MyFrame.Navigate(typeof(Lights));
+                BackButton.Visibility = Visibility.Collapsed;
+            }
+            if (Settings.IsSelected)
+            {
+                MyFrame.Navigate(typeof(Settings));
+                BackButton.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MyFrame.CanGoBack)
+            {
+                MyFrame.GoBack();
+                Lights.IsSelected = true;
+            }
+        }
     }
 }

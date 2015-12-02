@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="HueLamp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HueLamp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:i="using:Microsoft.Xaml.Interactivity" 
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel>
+            <Button x:ConnectionId='6' Name="HamburgerButton"
+                    RelativePanel.AlignLeftWithPanel="True"
+                   FontFamily="Segoe MDl2 Assets" 
+                    FontSize="36"
+                    Content="&#xE700;"
+                                                 
+                    />
+
+            <Button x:ConnectionId='7' Name="BackButton"
+                    RelativePanel.RightOf="HamburgerButton"
+                   FontFamily="Segoe MDl2 Assets" 
+                    FontSize="36"
+                    Content="&#xE0C4;"
+                                            />
+            
+        </RelativePanel>
+
+        <SplitView x:ConnectionId='1'  Name="MySplitview" 
+                   Grid.Row="1"
+                   DisplayMode="CompactOverlay"
+                   OpenPaneLength="200"
+                   CompactPaneLength="56">
+            <SplitView.Pane>
+                <ListBox x:ConnectionId='2' SelectionMode="Single"                                            >
+                    <ListBoxItem x:ConnectionId='3' Name="Lights">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xEA80;"/>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem x:ConnectionId='4' Name="Settings">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE115;"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </SplitView.Pane>
+            
+            <SplitView.Content>
+                <Frame x:ConnectionId='5' Name="MyFrame">
+                </Frame>
+            </SplitView.Content>
+        </SplitView>
+
+    </Grid>
+</Page>
+
