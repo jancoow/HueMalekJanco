@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:i="using:Microsoft.Xaml.Interactivity" 
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -20,7 +22,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical">
             <TextBlock Text="HUEHEUEHUEApp" HorizontalAlignment="Center"/>
-            <ListView ItemsSource="{Binding Path=Items}" Grid.Row="1" Margin="0,40,0,40" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled">
+            <ListView ItemsSource="{Binding Path=Items}" Grid.Row="1" Margin="0,40,0,40" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled" SelectionMode="None">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsWrapGrid Orientation="Horizontal"/>
@@ -31,7 +33,7 @@
                         <Grid x:Name="LampTile" Margin="6,6,6,6" >
                             <Rectangle Stroke="#FFCACACA" Width="136" Height="136" Fill="#FFF1EFEF" />
                             <TextBlock Text="{Binding name}"></TextBlock>
-                            <Image Width="90" Height="90"  xmlns:i="using:Microsoft.Xaml.Interactivity" xmlns:ic="using:Microsoft.Xaml.Interactions.Core">
+                            <Image Width="90" Height="90"  >
                                 <i:Interaction.Behaviors>
                                     <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="True" ComparisonCondition="Equal">
                                         <ic:ChangePropertyAction PropertyName="Source" Value="lamp_on.png"/>
