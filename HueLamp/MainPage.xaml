@@ -32,8 +32,8 @@
                     <DataTemplate >
                         <Grid x:Name="LampTile" Margin="6,6,6,6" >
                             <Rectangle Stroke="#FFCACACA" Width="136" Height="136" Fill="#FFF1EFEF" />
-                            <TextBlock Text="{Binding name}"></TextBlock>
-                            <Image Width="90" Height="90"  >
+                            <TextBlock Text="{Binding name}" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+                            <Image Width="90" Height="90" Margin="0,10,0,0"  >
                                 <i:Interaction.Behaviors>
                                     <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="True" ComparisonCondition="Equal">
                                         <ic:ChangePropertyAction PropertyName="Source" Value="lamp_on.png"/>
@@ -49,4 +49,15 @@
             </ListView>
         </StackPanel>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Setting" Label="Settings" />
+            <AppBarButton Icon="Refresh" Label="Refresh" />
+            <AppBarSeparator/>
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="About" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
