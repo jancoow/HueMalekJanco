@@ -1,14 +1,16 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HueLamp
 {
-    class HueLamp
+    class HueGroup
     {
+        public ObservableCollection<HueLamp> lamps;
         private HueHandler hh;
         public string id;
         public Boolean OnLamp { get; set; }
@@ -22,13 +24,9 @@ namespace HueLamp
         public string effect;
         public string colormode;
         public string reachable;
-        public string type;
         public string name { get; set; }
-        public string modelid;
-        public string swversion;
 
-        public HueLamp(HueHandler hh, string id, string OnLamp, string BrightnesLamp, string ColorLamp, string Sat, string x, string y,string CT,
-            string alert, string effect, string colormode, string reachable, string type, string name, string modelid, string swversion)
+        public HueGroup(HueHandler hh, String id, String OnLamp, String BrightnesLamp, String ColorLamp, String Sat, String x, String y, String CT, String alert, String effect, String ColorMode, String Reachable, String name, ObservableCollection<HueLamp> lamps)
         {
             this.hh = hh;
             this.id = id;
@@ -41,27 +39,25 @@ namespace HueLamp
             this.CT = CT;
             this.alert = alert;
             this.effect = effect;
-            this.colormode = colormode;
-            this.reachable = reachable;
-            this.type = type;
+            this.colormode = ColorMode;
+            this.reachable = Reachable;
             this.name = name;
-            this.modelid = modelid;
-            this.swversion = swversion;
+            this.lamps = lamps;
         }
 
         public void SetPower(Boolean state)
         {
-            if(OnLamp != state)
+            if (OnLamp != state)
             {
                 OnLamp = state;
-                hh.sendLightCommando(id, "{\"on\":"+state+"}");
+                hh.sendGroupCommando(id, "{\"on\":" + state + "}");
             }
         }
         public void setRGBValue(float r, float g, float b)
         {
             double h, s, v;
             ColorUtil.RGBtoHSV(r, g, b, out h, out s, out v);
-            SetHSLValue((int)((h/360.0f)*65535.0f), (int)s*254, (int)v-1);
+            SetHSLValue((int)((h / 360.0f) * 65535.0f), (int)s * 254, (int)v - 1);
         }
 
         public void getRGBValue(out double r, out double g, out double b)
@@ -72,24 +68,23 @@ namespace HueLamp
         public void SetHSLValue(int h, int s, int b)
         {
             dynamic jsonObject = new JObject();
-            if(h != ColorLamp)
+            if (h != ColorLamp)
             {
                 ColorLamp = h;
                 jsonObject.hue = ColorLamp;
             }
-            if(s != Sat)
+            if (s != Sat)
             {
                 Sat = s;
                 jsonObject.sat = Sat;
             }
-            if(b != BrightnesLamp)
+            if (b != BrightnesLamp)
             {
                 BrightnesLamp = b;
                 jsonObject.bri = BrightnesLamp;
             }
             String json = ((object)jsonObject).ToString();
-            hh.sendLightCommando(id, json);
+            hh.sendGroupCommando(id, json);
         }
     }
-
 }

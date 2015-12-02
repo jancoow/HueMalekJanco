@@ -48,6 +48,12 @@
                         </StackPanel>
                     </ListBoxItem>
 
+                    <ListBoxItem Name="Groups">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE71B;"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                    
                     <ListBoxItem Name="Settings">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE115;"/>

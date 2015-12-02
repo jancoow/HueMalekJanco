@@ -46,6 +46,18 @@ namespace HueLamp
             }
         }
 
+        public async Task<string> DeleteCommand(string url)
+        {
+            url = "http://" + ip + ":" + port + "/" + url;
+            using (HttpClient hc = new HttpClient())
+            {
+                var response = await hc.DeleteAsync(url);
+                response.EnsureSuccessStatusCode();
+                System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
+
         public async Task<string> PostCommand(string url, string Data )
         {
             url = "http://" + ip + ":" + port + "/" + url;

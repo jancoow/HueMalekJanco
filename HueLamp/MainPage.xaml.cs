@@ -43,9 +43,14 @@ namespace HueLamp
                 MyFrame.Navigate(typeof(Lights));
                 BackButton.Visibility = Visibility.Collapsed;
             }
-            if (Settings.IsSelected)
+            else if (Settings.IsSelected)
             {
                 MyFrame.Navigate(typeof(Settings));
+                BackButton.Visibility = Visibility.Visible;
+            }
+            else if (Groups.IsSelected)
+            {
+                MyFrame.Navigate(typeof(Groups));
                 BackButton.Visibility = Visibility.Visible;
             }
         }

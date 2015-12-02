@@ -12,12 +12,14 @@ namespace HueLamp
     {
         NetworkHandler nw;
         public ObservableCollection<HueLamp> lamps;
+        public ObservableCollection<HueGroup> groups;
         string apikey;
 
         public HueHandler()
         {
             nw = new NetworkHandler("localhost", "8000");
             lamps = new ObservableCollection<HueLamp>();
+            groups = new ObservableCollection<HueGroup>();
             InitLights();
         }
 
@@ -42,6 +44,7 @@ namespace HueLamp
         {
             if ((await createUser("hueapplication")) == true)
             {
+                //lampen
                 String jsonreturn = await nw.GetCommand("api/" + apikey + "/lights");
                 JArray array = JArray.Parse("[" + jsonreturn + "]");
                 for (int i = 1; i <= array[0].Count(); i++)
@@ -67,13 +70,49 @@ namespace HueLamp
                         citem["swversion"].ToString()
                         ));
                 }
-                lamps[0].setRGBValue(0, 255, 0);
+                
+                //groepen
+                jsonreturn = await nw.GetCommand("api/" + apikey + "/groups");
+                array = JArray.Parse("[" + jsonreturn + "]");
+                for (int i = 1; i <= array[0].Count(); i++)
+                {
+                    var citem = array[0][i.ToString()];
+                    String groupinformation = await nw.GetCommand("api/" + apikey + "/groups/" + i);
+                    JObject jobject = JObject.Parse(groupinformation);
+                    ObservableCollection<HueLamp> grouplamps = new ObservableCollection<HueLamp>();
+                    foreach(var l in jobject["lights"])
+                    {
+                        grouplamps.Add(lamps[Int32.Parse(l.ToString())]);
+                    }
+                    groups.Add(new HueGroup(
+                        this, 
+                        i.ToString(),
+                        jobject["action"]["on"].ToString(),
+                        jobject["action"]["bri"].ToString(),
+                        jobject["action"]["hue"].ToString(),
+                        jobject["action"]["sat"].ToString(),
+                        jobject["action"]["xy"][0].ToString(),
+                        jobject["action"]["xy"][1].ToString(),
+                        jobject["action"]["ct"].ToString(),
+                        jobject["action"]["alert"].ToString(),
+                        jobject["action"]["effect"].ToString(),
+                        jobject["action"]["colormode"].ToString(),
+                        jobject["action"]["reachable"].ToString(),
+                        jobject["name"].ToString(),
+                        grouplamps
+                    ));           
+                }
             };
         }
 
-        public async void sendCommando(string lightid, string json)
+        public async void sendLightCommando(string lightid, string json)
         {
             await nw.PutCommand("api/" + apikey + "/lights/" + lightid+"/state", json);
+        }
+
+        public async void sendGroupCommando(string groupid, string json)
+        {
+            await nw.PutCommand("api/" + apikey + "/groups/" + groupid + "/action", json);
         }
     }
 }

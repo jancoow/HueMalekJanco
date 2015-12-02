@@ -100,8 +100,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ColorUtil.cs" />
+    <Compile Include="HueGroup.cs" />
     <Compile Include="HueHandler.cs" />
     <Compile Include="HueLamp.cs" />
+    <Compile Include="Groups.xaml.cs">
+      <DependentUpon>Groups.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lights.xaml.cs">
       <DependentUpon>Lights.xaml</DependentUpon>
     </Compile>
@@ -138,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Groups.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Lights.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

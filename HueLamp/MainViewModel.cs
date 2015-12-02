@@ -9,13 +9,16 @@ namespace HueLamp
 {
     class MainViewModel
     {
-        private ObservableCollection<HueLamp> _items;
         HueHandler h;
 
         public MainViewModel(HueHandler h)
         {
             this.h = h;
         
+        }
+        public ObservableCollection<HueGroup> Groups
+        {
+            get { return h.groups; }
         }
 
         public ObservableCollection<HueLamp> Items
