@@ -42,7 +42,7 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Add" Label="Add group" />
+            <AppBarButton Click="AddGroup_Click" Icon="Add" Label="Add group" />
             <AppBarButton Icon="Refresh" Label="Refresh" />
         </CommandBar>
     </Page.BottomAppBar>

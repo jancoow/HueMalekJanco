@@ -79,7 +79,7 @@ namespace HueLamp
                     var citem = array[0][i.ToString()];
                     String groupinformation = await nw.GetCommand("api/" + apikey + "/groups/" + i);
                     JObject jobject = JObject.Parse(groupinformation);
-                    ObservableCollection<HueLamp> grouplamps = new ObservableCollection<HueLamp>();
+                    List<HueLamp> grouplamps = new List<HueLamp>();
                     foreach(var l in jobject["lights"])
                     {
                         grouplamps.Add(lamps[Int32.Parse(l.ToString())]);
@@ -103,6 +103,22 @@ namespace HueLamp
                     ));           
                 }
             };
+        }
+
+        public async void addGroup(String name, List<HueLamp> lights)
+        {
+            JArray jsonarray = new JArray();
+            foreach (HueLamp l in lights)
+            {
+                jsonarray.Add(l.id);
+            }
+            dynamic jsonObject = new JObject();
+            jsonObject.name = name;
+            jsonObject.lights = jsonarray;
+            String jsonreturn = await nw.PostCommand("api/" + apikey + "/groups", ((object)jsonObject).ToString());
+            JArray array = JArray.Parse(jsonreturn);
+            String groupid = array[0]["success"]["id"].ToString().Substring(8);
+            groups.Add(new HueGroup(this, groupid, "false", "0", "0", "0", "0", "", "", "", "", "", "", name, lights));
         }
 
         public async void sendLightCommando(string lightid, string json)
