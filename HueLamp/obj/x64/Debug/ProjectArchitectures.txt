@@ -1,0 +1,1 @@
+C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\HueLamp.csproj;x64

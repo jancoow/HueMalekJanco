@@ -10,7 +10,11 @@
     mc:Ignorable="d"
     >
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical">
             <TextBlock Text="Alle Hue-Lampen" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Microsoft YaHei UI" FontSize="24"/>
             <ListView ItemsSource="{Binding Path=Items}" Grid.Row="1" Margin="0,40,0,40" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled" SelectionMode="None">
                 <ListView.ItemsPanel>
@@ -21,18 +25,22 @@
                 <ListView.ItemTemplate >
                     <DataTemplate >
                         <Grid x:Name="LampTile" Margin="6,6,6,20" >
-                            <Rectangle Stroke="#FFCACACA" Width="136" Height="136" Fill="#FFF1EFEF"/>
-                            <TextBlock x:ConnectionId='1' Name="ButtonLamp" Text="{Binding name}" FontWeight="Bold" HorizontalAlignment="Center"                                              ></TextBlock>
-                            <Image Width="90" Height="90" Margin="0,10,0,0"  >
-                                <i:Interaction.Behaviors>
-                                    <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="True" ComparisonCondition="Equal">
-                                        <ic:ChangePropertyAction PropertyName="Source" Value="lamp_on.png"/>
-                                    </ic:DataTriggerBehavior>
-                                    <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="False" ComparisonCondition="Equal">
-                                        <ic:ChangePropertyAction PropertyName="Source" Value="lamp_off.png"/>
-                                    </ic:DataTriggerBehavior>
-                                </i:Interaction.Behaviors>
-                            </Image>
+                            <Button x:ConnectionId='1'  Width="136" Height="136"                     >
+                                <StackPanel>
+                                    <TextBlock Name="NameLamp" Text="{Binding name}" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+                                    <Image Width="90" Height="90" Margin="0,10,0,0">
+                                        <i:Interaction.Behaviors>
+                                            <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="True" ComparisonCondition="Equal">
+                                                <ic:ChangePropertyAction PropertyName="Source" Value="lamp_on.png"/>
+                                            </ic:DataTriggerBehavior>
+                                            <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="False" ComparisonCondition="Equal">
+                                                <ic:ChangePropertyAction PropertyName="Source" Value="lamp_off.png"/>
+                                            </ic:DataTriggerBehavior>
+                                        </i:Interaction.Behaviors>
+
+                                    </Image>
+                                </StackPanel>
+                            </Button>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

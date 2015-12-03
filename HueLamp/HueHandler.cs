@@ -14,7 +14,7 @@ namespace HueLamp
         public ObservableCollection<HueLamp> lamps;
         public ObservableCollection<HueGroup> groups;
         string apikey;
-
+        public HueLamp hue;
         public HueHandler()
         {
             nw = new NetworkHandler("localhost", "8000");
@@ -50,7 +50,7 @@ namespace HueLamp
                 {
                     JObject lamp= JObject.Parse(lampsjson["" + i.Key].ToString());
                     JObject lampstate = JObject.Parse(lamp["state"].ToString());
-                    lamps.Add(new HueLamp(
+                    lamps.Add(hue = new HueLamp(
                         this,
                         i.Key,
                         getKey(lampstate, "on"),

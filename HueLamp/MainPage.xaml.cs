@@ -30,6 +30,7 @@ namespace HueLamp
             hh = new HueHandler();
             this.InitializeComponent();
             DataContext = new MainViewModel(hh);
+           
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -56,13 +57,18 @@ namespace HueLamp
             }
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        public void BackButton_Click(object sender, RoutedEventArgs e)
         { 
             if (MyFrame.CanGoBack)
             {
                MyFrame.GoBack();
                Lights.IsSelected = true;
             }
+        }
+
+        public void setBackButtonVissible()
+        {
+            BackButton.Visibility = Visibility.Visible;
         }
     }
 }

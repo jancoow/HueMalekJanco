@@ -10,16 +10,45 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1">
-                <Slider Name="ChangeColor" ValueChanged="Slider_ValueChanged" Margin="0,0,0,0"/>
-            </StackPanel>
+
+
+        <RelativePanel Grid.Row="0">
+            <TextBlock Name="NameLight" RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="50" Margin="50,0,0,0" SelectionChanged="TextBlock_SelectionChanged" />
+        </RelativePanel>
+
+        <RelativePanel Grid.Row="1">
+            <Ellipse Fill="{Binding Color}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Height="20" Margin="0,10,0,10" />
+        </RelativePanel>
 
         <StackPanel Grid.Row="2">
-            <Slider x:Name="ChangeBrighness" ValueChanged="ChangeBrighness_ValueChanged"/>
+            <TextBlock FontSize="24">LightColors</TextBlock>
+            <Slider Maximum="100" Value="{Binding LightColors, Mode=TwoWay}" ValueChanged="Slider_ValueChanged" PointerCaptureLost="Slider_PointerCaptureLost"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3">
+            <TextBlock FontSize="24">Brightnes</TextBlock>
+            <Slider Maximum="100" Value="{Binding Brightnes, Mode=TwoWay}" ValueChanged="Slider_ValueChanged" PointerCaptureLost="Slider_PointerCaptureLost"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4">
+            <TextBlock FontSize="24">Saturation</TextBlock>
+            <Slider Maximum="100" Value="{Binding Brightnes, Mode=TwoWay}" ValueChanged="Slider_ValueChanged" PointerCaptureLost="Slider_PointerCaptureLost"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5">
+            <TextBlock FontSize="24">
+            	<Run Text="Switch-ON-OFF"/>
+            </TextBlock>
+            <ToggleSwitch Margin="20,10,0,10" Toggled="ToggleSwitch_Toggled" IsOn="{Binding SetOnOff}">
+                <ToggleSwitch.OffContent>Off</ToggleSwitch.OffContent>
+                <ToggleSwitch.OnContent>On</ToggleSwitch.OnContent>
+            </ToggleSwitch>
         </StackPanel>
     </Grid>
 </Page>

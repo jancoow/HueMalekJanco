@@ -1,1 +1,1 @@
-C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\HueLamp.csproj;x86
+C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\HueLamp.csproj;x86

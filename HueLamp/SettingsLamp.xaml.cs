@@ -22,19 +22,41 @@ namespace HueLamp
     /// </summary>
     public sealed partial class SettingsLamp : Page
     {
+        HueHandler hh;
         public SettingsLamp()
         {
             this.InitializeComponent();
+            
         }
 
         private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-
+          
         }
 
         private void ChangeBrighness_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
 
+        }
+
+        private void Slider_PointerCaptureLost(object sender, PointerRoutedEventArgs e)
+        {
+
+        }
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            hh = (HueHandler)e.Parameter;
+        }
+
+        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            NameLight.Text = hh.hue.name.ToString();
         }
     }
 }
