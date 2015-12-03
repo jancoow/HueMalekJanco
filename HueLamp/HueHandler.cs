@@ -17,7 +17,7 @@ namespace HueLamp
 
         public HueHandler()
         {
-            nw = new NetworkHandler("145.48.205.190", "80");
+            nw = new NetworkHandler("localhost", "8000");
             lamps = new ObservableCollection<HueLamp>();
             groups = new ObservableCollection<HueGroup>();
             InitLights();
@@ -25,14 +25,11 @@ namespace HueLamp
 
         public async Task<Boolean> createUser(string name)
         {
-            apikey = "14a01512180476bf133718e038ce829f";
-            return true;
             JArray array = JArray.Parse(await nw.PostCommand("api", "  {  \"devicetype\":  \" " + name + " \"}  "));
             if(array[0]["error"] != null)
             {
                 System.Diagnostics.Debug.WriteLine("Error:" + array[0]["error"]["description"]);
                 return false;
-                //Hier moet iets met de error gedaan worden
             }else if(array[0]["success"] != null)
             {
                 System.Diagnostics.Debug.WriteLine("Username key:" + array[0]["success"]["username"]);
@@ -48,67 +45,68 @@ namespace HueLamp
             {
                 //lampen
                 String jsonreturn = await nw.GetCommand("api/" + apikey + "/lights");
-                JObject o = JObject.Parse(jsonreturn);
-                foreach (var i in o)
+                JObject lampsjson = JObject.Parse(jsonreturn);
+                foreach (var i in lampsjson)
                 {
-                    JObject citem= JObject.Parse(o["" + i.Key].ToString());
-                    JObject citemstate = JObject.Parse(citem["state"].ToString());
+                    JObject lamp= JObject.Parse(lampsjson["" + i.Key].ToString());
+                    JObject lampstate = JObject.Parse(lamp["state"].ToString());
                     lamps.Add(new HueLamp(
                         this,
                         i.Key,
-                        getKey(citemstate, "on"),
-                        getKey(citemstate, "bri"),
-                        getKey(citemstate, "hue"),
-                        getKey(citemstate, "sat"),
+                        getKey(lampstate, "on"),
+                        getKey(lampstate, "bri"),
+                        getKey(lampstate, "hue"),
+                        getKey(lampstate, "sat"),
                         "0",
                         "0",
-                        getKey(citemstate, "ct"),
-                        getKey(citemstate, "alert"),
-                        getKey(citemstate, "effect"),
-                        getKey(citemstate, "colormode"),
-                        getKey(citemstate, "reachable"),
-                        getKey(citem, "type"),
-                        getKey(citem, "name"),
-                        getKey(citem, "modelid"),
-                        getKey(citem, "swversion")
+                        getKey(lampstate, "ct"),
+                        getKey(lampstate, "alert"),
+                        getKey(lampstate, "effect"),
+                        getKey(lampstate, "colormode"),
+                        getKey(lampstate, "reachable"),
+                        getKey(lamp, "type"),
+                        getKey(lamp, "name"),
+                        getKey(lamp, "modelid"),
+                        getKey(lamp, "swversion")
                         ));
                 }
 
                 //groepen
                 jsonreturn = await nw.GetCommand("api/" + apikey + "/groups");
-                o = JObject.Parse(jsonreturn);
-                foreach (var i in o)
+                foreach (var i in JObject.Parse(jsonreturn))
                 {
-                    var citem = o["" + i.Key];
                     String groupinformation = await nw.GetCommand("api/" + apikey + "/groups/" + i.Key);
-                    JObject jobject = JObject.Parse(groupinformation);
-                    JObject jobjectaction;
-                    try {jobjectaction = JObject.Parse(jobject["action"].ToString()); } catch {jobjectaction = jobject; };
+                    JObject group = JObject.Parse(groupinformation);
+                    JObject groupaction;
+                    try {groupaction = JObject.Parse(group["action"].ToString()); } catch {groupaction = group; };
                     List<HueLamp> grouplamps = new List<HueLamp>();
-                    foreach(var l in jobject["lights"])
+                    foreach(var l in group["lights"])
                     {
-                       // grouplamps.Add(lamps[Int32.Parse(l.ToString())]);
+                        foreach(HueLamp h in lamps)
+                        {
+                            if(h.id == l.ToString())
+                                grouplamps.Add(h);
+                        }
                     }
                     groups.Add(new HueGroup(
                         this, 
                         i.Key,
-                        getKey(jobjectaction, "on"),
-                        getKey(jobjectaction, "bri"),
-                        getKey(jobjectaction, "hue"),
-                        getKey(jobjectaction, "sat"),
+                        getKey(groupaction, "on"),
+                        getKey(groupaction, "bri"),
+                        getKey(groupaction, "hue"),
+                        getKey(groupaction, "sat"),
                         "0",
                         "0",
-                        getKey(jobjectaction, "ct"),
-                        getKey(jobjectaction, "alert"),
-                        getKey(jobjectaction, "effect"),
-                        getKey(jobjectaction, "colormode"),
-                        getKey(jobjectaction, "reachable"),
-                        getKey(jobject, "name"),
+                        getKey(groupaction, "ct"),
+                        getKey(groupaction, "alert"),
+                        getKey(groupaction, "effect"),
+                        getKey(groupaction, "colormode"),
+                        getKey(groupaction, "reachable"),
+                        getKey(group, "name"),
                         grouplamps
                     ));           
                 }
             };
-            groups[0].setRGBValue(0, 255, 0);
         }
 
         public String getKey(JObject jobject, String arrayplace)

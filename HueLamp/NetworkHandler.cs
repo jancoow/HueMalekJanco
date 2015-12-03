@@ -34,7 +34,7 @@ namespace HueLamp
                 }
                 catch
                 {
-                    return "";
+                    return "[{\"error\":{\"address\":\"\",\"description\":\"Network error\",\"type\":\"0\"}}]";
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace HueLamp
                 }
                 catch
                 {
-                    return "";
+                    return "[{\"error\":{\"address\":\"\",\"description\":\"Network error\",\"type\":\"0\"}}]";
                 }
             }
         }
@@ -64,10 +64,17 @@ namespace HueLamp
             url = "http://" + ip + ":" + port + "/" + url;
             using (HttpClient hc = new HttpClient())
             {
-                var response = await hc.DeleteAsync(url);
-                response.EnsureSuccessStatusCode();
-                System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
-                return await response.Content.ReadAsStringAsync();
+                try
+                {
+                    var response = await hc.DeleteAsync(url);
+                    response.EnsureSuccessStatusCode();
+                    System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
+                    return await response.Content.ReadAsStringAsync();
+                }
+                catch
+                {
+                    return "[{\"error\":{\"address\":\"\",\"description\":\"Network error\",\"type\":\"0\"}}]";
+                }
             }
         }
 
@@ -77,10 +84,17 @@ namespace HueLamp
             HttpContent content = new StringContent(Data, Encoding.UTF8, "application/json");
             using (HttpClient hc = new HttpClient())
             {
-                var response = await hc.PostAsync(url, content);
-                response.EnsureSuccessStatusCode();
-                System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
-                return await response.Content.ReadAsStringAsync();
+                try
+                {
+                    var response = await hc.PostAsync(url, content);
+                    response.EnsureSuccessStatusCode();
+                    System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
+                    return await response.Content.ReadAsStringAsync();
+                }
+                catch
+                {
+                    return "[{\"error\":{\"address\":\"\",\"description\":\"Network error\",\"type\":\"0\"}}]";
+                }
             }
         }
     }
