@@ -7,14 +7,13 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-
+using System.Diagnostics;
 namespace HueLamp
 {
     class NetworkHandler
     {
         string ip;
         string port;
-
         public NetworkHandler(string ip, string port)
         {
             this.ip = ip;
@@ -29,7 +28,7 @@ namespace HueLamp
                 var response = await hc.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
-                return await response.Content.ReadAsStringAsync(); ;
+                return await response.Content.ReadAsStringAsync();
             }
         }
 

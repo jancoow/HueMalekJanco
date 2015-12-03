@@ -32,7 +32,7 @@
                     FontSize="36"
                     Content="&#xE0C4;"
                     Click="BackButton_Click"/>
-            
+
         </RelativePanel>
 
         <SplitView  Name="MySplitview" 
@@ -45,28 +45,31 @@
                     <ListBoxItem Name="Lights">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xEA80;"/>
+                            <TextBlock FontSize="26" Margin="20,0,0,0">Lights</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
 
                     <ListBoxItem Name="Groups">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE71B;"/>
+                            <TextBlock FontSize="26" Margin="20,0,0,0">Groups</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
-                    
+
                     <ListBoxItem Name="Settings">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE115;"/>
+                            <TextBlock FontSize="26" Margin="20,0,0,0">Settings</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
                 </ListBox>
             </SplitView.Pane>
-            
+
             <SplitView.Content>
                 <Frame Name="MyFrame">
                 </Frame>
             </SplitView.Content>
         </SplitView>
-
+        <ProgressRing Name="Progress" />
     </Grid>
 </Page>

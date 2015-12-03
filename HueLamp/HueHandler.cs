@@ -70,7 +70,6 @@ namespace HueLamp
                         citem["swversion"].ToString()
                         ));
                 }
-                
                 //groepen
                 jsonreturn = await nw.GetCommand("api/" + apikey + "/groups");
                 array = JArray.Parse("[" + jsonreturn + "]");

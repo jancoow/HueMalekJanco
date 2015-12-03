@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <RelativePanel>
-            <Button x:ConnectionId='6' Name="HamburgerButton"
+            <Button x:ConnectionId='8' Name="HamburgerButton"
                     RelativePanel.AlignLeftWithPanel="True"
                    FontFamily="Segoe MDl2 Assets" 
                     FontSize="36"
@@ -26,13 +26,13 @@
                                                  
                     />
 
-            <Button x:ConnectionId='7' Name="BackButton"
+            <Button x:ConnectionId='9' Name="BackButton"
                     RelativePanel.RightOf="HamburgerButton"
                    FontFamily="Segoe MDl2 Assets" 
                     FontSize="36"
                     Content="&#xE0C4;"
                                             />
-            
+
         </RelativePanel>
 
         <SplitView x:ConnectionId='1'  Name="MySplitview" 
@@ -41,27 +41,36 @@
                    OpenPaneLength="200"
                    CompactPaneLength="56">
             <SplitView.Pane>
-                <ListBox x:ConnectionId='2' SelectionMode="Single"                                            >
-                    <ListBoxItem x:ConnectionId='3' Name="Lights">
+                <ListBox x:ConnectionId='3' SelectionMode="Single"                                            >
+                    <ListBoxItem x:ConnectionId='4' Name="Lights">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xEA80;"/>
+                            <TextBlock FontSize="26" Margin="20,0,0,0">Lights</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
 
-                    <ListBoxItem x:ConnectionId='4' Name="Settings">
+                    <ListBoxItem x:ConnectionId='5' Name="Groups">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE71B;"/>
+                            <TextBlock FontSize="26" Margin="20,0,0,0">Groups</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem x:ConnectionId='6' Name="Settings">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE115;"/>
+                            <TextBlock FontSize="26" Margin="20,0,0,0">Settings</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
                 </ListBox>
             </SplitView.Pane>
-            
+
             <SplitView.Content>
-                <Frame x:ConnectionId='5' Name="MyFrame">
+                <Frame x:ConnectionId='7' Name="MyFrame">
                 </Frame>
             </SplitView.Content>
         </SplitView>
-
+        <ProgressRing x:ConnectionId='2' Name="Progress" />
     </Grid>
 </Page>
 

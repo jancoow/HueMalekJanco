@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,10 +24,10 @@ namespace HueLamp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
+      
         public MainPage()
         {
-            HueHandler hh = new HueHandler();
+           HueHandler hh = new HueHandler();
             this.InitializeComponent();
             DataContext = new MainViewModel(hh);
         }
@@ -56,11 +57,11 @@ namespace HueLamp
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             if (MyFrame.CanGoBack)
             {
-                MyFrame.GoBack();
-                Lights.IsSelected = true;
+               MyFrame.GoBack();
+               Lights.IsSelected = true;
             }
         }
     }

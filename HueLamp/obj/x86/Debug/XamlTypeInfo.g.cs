@@ -156,7 +156,7 @@ namespace HueLamp.HueLamp_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[17];
+            _typeNameTable = new string[19];
             _typeNameTable[0] = "Microsoft.Xaml.Interactivity.Interaction";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
@@ -169,13 +169,15 @@ namespace HueLamp.HueLamp_XamlTypeInfo
             _typeNameTable[9] = "System.ValueType";
             _typeNameTable[10] = "Microsoft.Xaml.Interactions.Core.ChangePropertyAction";
             _typeNameTable[11] = "String";
-            _typeNameTable[12] = "HueLamp.Lights";
+            _typeNameTable[12] = "HueLamp.Groups";
             _typeNameTable[13] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[14] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[15] = "HueLamp.MainPage";
-            _typeNameTable[16] = "HueLamp.Settings";
+            _typeNameTable[15] = "HueLamp.Lights";
+            _typeNameTable[16] = "HueLamp.MainPage";
+            _typeNameTable[17] = "HueLamp.Settings";
+            _typeNameTable[18] = "HueLamp.SettingsLamp";
 
-            _typeTable = new global::System.Type[17];
+            _typeTable = new global::System.Type[19];
             _typeTable[0] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
@@ -188,11 +190,13 @@ namespace HueLamp.HueLamp_XamlTypeInfo
             _typeTable[9] = typeof(global::System.ValueType);
             _typeTable[10] = typeof(global::Microsoft.Xaml.Interactions.Core.ChangePropertyAction);
             _typeTable[11] = typeof(global::System.String);
-            _typeTable[12] = typeof(global::HueLamp.Lights);
+            _typeTable[12] = typeof(global::HueLamp.Groups);
             _typeTable[13] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[14] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[15] = typeof(global::HueLamp.MainPage);
-            _typeTable[16] = typeof(global::HueLamp.Settings);
+            _typeTable[15] = typeof(global::HueLamp.Lights);
+            _typeTable[16] = typeof(global::HueLamp.MainPage);
+            _typeTable[17] = typeof(global::HueLamp.Settings);
+            _typeTable[18] = typeof(global::HueLamp.SettingsLamp);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -231,9 +235,11 @@ namespace HueLamp.HueLamp_XamlTypeInfo
         private object Activate_5_DataTriggerBehavior() { return new global::Microsoft.Xaml.Interactions.Core.DataTriggerBehavior(); }
         private object Activate_6_ActionCollection() { return new global::Microsoft.Xaml.Interactivity.ActionCollection(); }
         private object Activate_10_ChangePropertyAction() { return new global::Microsoft.Xaml.Interactions.Core.ChangePropertyAction(); }
-        private object Activate_12_Lights() { return new global::HueLamp.Lights(); }
-        private object Activate_15_MainPage() { return new global::HueLamp.MainPage(); }
-        private object Activate_16_Settings() { return new global::HueLamp.Settings(); }
+        private object Activate_12_Groups() { return new global::HueLamp.Groups(); }
+        private object Activate_15_Lights() { return new global::HueLamp.Lights(); }
+        private object Activate_16_MainPage() { return new global::HueLamp.MainPage(); }
+        private object Activate_17_Settings() { return new global::HueLamp.Settings(); }
+        private object Activate_18_SettingsLamp() { return new global::HueLamp.SettingsLamp(); }
         private void VectorAdd_2_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
@@ -335,9 +341,9 @@ namespace HueLamp.HueLamp_XamlTypeInfo
                 xamlType = new global::HueLamp.HueLamp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  HueLamp.Lights
+            case 12:   //  HueLamp.Groups
                 userType = new global::HueLamp.HueLamp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_12_Lights;
+                userType.Activator = Activate_12_Groups;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -350,16 +356,30 @@ namespace HueLamp.HueLamp_XamlTypeInfo
                 xamlType = new global::HueLamp.HueLamp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  HueLamp.MainPage
+            case 15:   //  HueLamp.Lights
                 userType = new global::HueLamp.HueLamp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_15_MainPage;
+                userType.Activator = Activate_15_Lights;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 16:   //  HueLamp.Settings
+            case 16:   //  HueLamp.MainPage
                 userType = new global::HueLamp.HueLamp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_16_Settings;
+                userType.Activator = Activate_16_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 17:   //  HueLamp.Settings
+                userType = new global::HueLamp.HueLamp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_17_Settings;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 18:   //  HueLamp.SettingsLamp
+                userType = new global::HueLamp.HueLamp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_18_SettingsLamp;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

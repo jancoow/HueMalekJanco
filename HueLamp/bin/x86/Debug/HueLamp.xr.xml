@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="Items" />
+    <RootPropertyPathName Name="Groups" />
     <RootPropertyPathName Name="OnLamp" />
     <RootPropertyPathName Name="name" />
+    <RootPropertyPathName Name="Items" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -32,6 +33,10 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="FontFamily" />
       <RootProperty Name="FontSize" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Inlines" />
+      <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="ItemsSource" />
@@ -85,13 +90,12 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="PrimaryCommands" />
-      <RootProperty Name="SecondaryCommands" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
       <RootProperty Name="Icon" />
       <RootProperty Name="Label" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarSeparator" />
+    <RootType FullName="HueLamp.Groups" />
     <RootType FullName="HueLamp.Lights" />
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
@@ -110,6 +114,9 @@
       <RootProperty Name="CompactPaneLength" />
       <RootProperty Name="Pane" />
       <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
+      <RootProperty Name="Name" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
       <RootProperty Name="SelectionMode" />
@@ -132,5 +139,11 @@
     </RootType>
     <RootType FullName="HueLamp.MainPage" />
     <RootType FullName="HueLamp.Settings" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Slider">
+      <RootProperty Name="Name" />
+      <RootProperty Name="Margin" />
+      <RootEvent Name="ValueChanged" />
+    </RootType>
+    <RootType FullName="HueLamp.SettingsLamp" />
   </Roots.RootTypes>
 </Roots>

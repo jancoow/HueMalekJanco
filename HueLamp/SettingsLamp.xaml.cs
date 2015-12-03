@@ -20,16 +20,21 @@ namespace HueLamp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Lights : Page
+    public sealed partial class SettingsLamp : Page
     {
-        public ProgressRing progress;
-        public Lights()
+        public SettingsLamp()
         {
             this.InitializeComponent();
         }
 
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        { 
+        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+
+        }
+
+        private void ChangeBrighness_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -789,3 +789,13 @@ C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\Se
 C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\Settings.g.cs
 C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\Settings.xaml
 C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\Settings.xbf
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\bin\x86\Debug\Groups.xbf
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\Groups.g.i.cs
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\Groups.g.cs
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\Groups.xaml
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\Groups.xbf
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\SettingsLamp.g.i.cs
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\SettingsLamp.g.cs
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\SettingsLamp.xaml
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\obj\x86\Debug\SettingsLamp.xbf
+C:\Users\malek\OneDrive\Documenten\GitHub\HueMalekJanco\HueLamp\bin\x86\Debug\SettingsLamp.xbf

@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="HueLamp.Lights"
+    x:Class="HueLamp.Groups"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:HueLamp"
@@ -11,8 +11,8 @@
     >
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="Alle Hue-Lampen" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Microsoft YaHei UI" FontSize="24"/>
-            <ListView ItemsSource="{Binding Path=Items}" Grid.Row="1" Margin="0,40,0,40" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled" SelectionMode="None">
+            <TextBlock Text="Alle Groepen" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Microsoft YaHei UI" FontSize="24"/>
+            <ListView ItemsSource="{Binding Path=Groups}" Grid.Row="1" Margin="0,40,0,40" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled" SelectionMode="None">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsWrapGrid Orientation="Horizontal"/>
@@ -21,8 +21,8 @@
                 <ListView.ItemTemplate >
                     <DataTemplate >
                         <Grid x:Name="LampTile" Margin="6,6,6,20" >
-                            <Rectangle Stroke="#FFCACACA" Width="136" Height="136" Fill="#FFF1EFEF"/>
-                            <TextBlock Name="ButtonLamp" Text="{Binding name}" FontWeight="Bold" HorizontalAlignment="Center" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
+                            <Rectangle Stroke="#FFCACACA" Width="136" Height="136" Fill="#FFF1EFEF" />
+                            <TextBlock Text="{Binding name}" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
                             <Image Width="90" Height="90" Margin="0,10,0,0"  >
                                 <i:Interaction.Behaviors>
                                     <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="True" ComparisonCondition="Equal">
@@ -42,7 +42,9 @@
 
     <Page.BottomAppBar>
         <CommandBar>
+            <AppBarButton Icon="Add" Label="Add group" />
             <AppBarButton Icon="Refresh" Label="Refresh" />
         </CommandBar>
     </Page.BottomAppBar>
 </Page>
+
