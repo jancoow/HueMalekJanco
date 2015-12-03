@@ -20,16 +20,11 @@ namespace HueLamp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Groups : Page
+    public sealed partial class AddHueGroup : Page
     {
-        public Groups()
+        public AddHueGroup()
         {
             this.InitializeComponent();
-        }
-
-        private void AddGroup_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(AddHueGroup));
         }
     }
 }
