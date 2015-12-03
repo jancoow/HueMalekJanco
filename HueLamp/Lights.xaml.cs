@@ -22,14 +22,16 @@ namespace HueLamp
     /// </summary>
     public sealed partial class Lights : Page
     {
+        HueHandler hh;
         public ProgressRing progress;
         public Lights()
         {
             this.InitializeComponent();
         }
 
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        { 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            hh = (HueHandler)e.Parameter;
         }
     }
 }

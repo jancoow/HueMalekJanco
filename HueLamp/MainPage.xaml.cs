@@ -24,10 +24,10 @@ namespace HueLamp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-      
+        HueHandler hh;
         public MainPage()
         {
-           HueHandler hh = new HueHandler();
+            hh = new HueHandler();
             this.InitializeComponent();
             DataContext = new MainViewModel(hh);
         }
@@ -41,17 +41,17 @@ namespace HueLamp
         {
             if (Lights.IsSelected)
             {
-                MyFrame.Navigate(typeof(Lights));
+                MyFrame.Navigate(typeof(Lights), hh);
                 BackButton.Visibility = Visibility.Collapsed;
             }
             else if (Settings.IsSelected)
             {
-                MyFrame.Navigate(typeof(Settings));
+                MyFrame.Navigate(typeof(Settings), hh);
                 BackButton.Visibility = Visibility.Visible;
             }
             else if (Groups.IsSelected)
             {
-                MyFrame.Navigate(typeof(Groups));
+                MyFrame.Navigate(typeof(Groups), hh);
                 BackButton.Visibility = Visibility.Visible;
             }
         }

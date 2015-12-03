@@ -22,6 +22,7 @@ namespace HueLamp
     /// </summary>
     public sealed partial class Groups : Page
     {
+        HueHandler hh;
         public Groups()
         {
             this.InitializeComponent();
@@ -29,7 +30,12 @@ namespace HueLamp
 
         private void AddGroup_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AddHueGroup));
+            this.Frame.Navigate(typeof(AddHueGroup), hh);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            hh = (HueHandler)e.Parameter;
         }
     }
 }

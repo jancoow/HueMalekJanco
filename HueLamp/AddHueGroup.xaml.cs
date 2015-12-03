@@ -22,9 +22,27 @@ namespace HueLamp
     /// </summary>
     public sealed partial class AddHueGroup : Page
     {
+
+        HueHandler hh;
         public AddHueGroup()
         {
             this.InitializeComponent();
+        }
+
+        private void Toevoegen_Click(object sender, RoutedEventArgs e)
+        {
+            List<HueLamp> lamps = new List<HueLamp>();
+            foreach(Object j in grouplamps.SelectedItems)
+            {
+                lamps.Add((HueLamp)j);
+            }
+            hh.addGroup(name.Text, lamps);
+            name.Text = "";
+            this.Frame.Navigate(typeof(Groups), hh);
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            hh = (HueHandler)e.Parameter;
         }
     }
 }

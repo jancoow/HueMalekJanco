@@ -30,7 +30,7 @@ namespace HueLamp
         {
             this.hh = hh;
             this.id = id;
-            this.OnLamp = Boolean.Parse(OnLamp);
+            try { this.OnLamp = Boolean.Parse(OnLamp); } catch { this.OnLamp = false; };
             this.BrightnesLamp = Int32.Parse(BrightnesLamp);
             this.ColorLamp = Int32.Parse(ColorLamp);
             this.Sat = Int32.Parse(Sat);

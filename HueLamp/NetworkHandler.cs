@@ -25,10 +25,17 @@ namespace HueLamp
             url = "http://" + ip + ":" + port + "/" + url;
             using (HttpClient hc = new HttpClient())
             {
-                var response = await hc.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-                System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
-                return await response.Content.ReadAsStringAsync();
+                try
+                {
+                    var response = await hc.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+                    System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
+                    return await response.Content.ReadAsStringAsync(); ;
+                }
+                catch
+                {
+                    return "";
+                }
             }
         }
 
@@ -38,10 +45,17 @@ namespace HueLamp
             HttpContent content = new StringContent(Data,Encoding.UTF8,"application/json");
             using (HttpClient hc = new HttpClient())
             {
-                var response = await hc.PutAsync(url,content);
-                response.EnsureSuccessStatusCode();
-                System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
-                return await response.Content.ReadAsStringAsync();
+                try
+                {
+                    var response = await hc.PutAsync(url, content);
+                    response.EnsureSuccessStatusCode();
+                    System.Diagnostics.Debug.WriteLine(await response.Content.ReadAsStringAsync());
+                    return await response.Content.ReadAsStringAsync();
+                }
+                catch
+                {
+                    return "";
+                }
             }
         }
 
