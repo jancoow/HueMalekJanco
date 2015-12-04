@@ -34,7 +34,14 @@ namespace HueLamp
 
         public void Slider_PointerCaptureLost(object sender, PointerRoutedEventArgs e)
         {
-            SolidColorBrush color = new SolidColorBrush(getColor());
+            hh.hue.setRGBValue((float)Bri.Value,(float)Hue.Value, (float)Sat.Value);
+            int hue;
+            int sat;
+            int bri;
+            SolidColorBrush color = new SolidColorBrush(hh.hue.getRGBValue(out bri, out hue,out sat));
+            Hue.Value = hue;
+            Sat.Value = sat;
+            Bri.Value = bri;
             ColorChanger.Fill = color;
         }
 
@@ -53,17 +60,7 @@ namespace HueLamp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             hh = (HueHandler)e.Parameter;
-        }
-
-        public Color getColor()
-        {
-            double hue = ((double)Hue.Value * 360.0f) / 65535.0f;
-            double sat = (double)Sat.Value / 255.0f;
-            double val = (double)Bri.Value / 255.0f;
-
-            int r, g, b;
-            ColorUtil.HsvToRgb(hue, sat, val, out r, out g, out b);
-            return Color.FromArgb(255, Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b));
+            NameLight.Text = hh.hue.name;
         }
     }
 }

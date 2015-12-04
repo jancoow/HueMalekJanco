@@ -1,4 +1,4 @@
-﻿<Page
+﻿ <Page
     x:Class="HueLamp.SettingsLamp"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -27,18 +27,18 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2">
-            <TextBlock FontSize="24">LightColors</TextBlock>
-            <Slider Name="Hue" Maximum="65535" PointerCaptureLost="Slider_PointerCaptureLost"/>
+            <TextBlock FontSize="24">Brightnes</TextBlock>
+            <Slider Name="Bri" Maximum="254" PointerCaptureLost="Slider_PointerCaptureLost"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3">
-            <TextBlock FontSize="24">Saturation</TextBlock>
-            <Slider Name="Sat" Maximum="254"  PointerCaptureLost="Slider_PointerCaptureLost"/>
+            <TextBlock FontSize="24">LightColors</TextBlock>
+            <Slider Name="Hue" Maximum="65535"  PointerCaptureLost="Slider_PointerCaptureLost"/>
         </StackPanel>
 
         <StackPanel Grid.Row="4">
-            <TextBlock FontSize="24">Brightnes</TextBlock>
-            <Slider Name="Bri" Maximum="254" PointerCaptureLost="Slider_PointerCaptureLost"/>
+            <TextBlock FontSize="24">Saturation</TextBlock>
+            <Slider Name="Sat" Maximum="254" PointerCaptureLost="Slider_PointerCaptureLost"/>
         </StackPanel>
 
         <StackPanel Grid.Row="5">

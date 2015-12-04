@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI;
 
 namespace HueLamp
 {
@@ -61,13 +62,15 @@ namespace HueLamp
         {
             double h, s, v;
             ColorUtil.RGBtoHSV(r, g, b, out h, out s, out v);
-            SetHSLValue((int)((h/360.0f)*65535.0f), (int)s*254, (int)v-1);
+            SetHSLValue( (int)s*254, (int)((h / 360.0f) * 65535.0f),(int)v - 1);
         }
 
-        public void getRGBValue(out int r, out int g, out int b)
+        public Color getRGBValue(out int r, out int g, out int b)
         {
-            ColorUtil.HsvToRgb((ColorLamp*360.0f) / 65535.0f, Sat/254.0f, (BrightnesLamp+1)/254.0f, out r, out g, out b);
+            ColorUtil.HsvToRgb((BrightnesLamp + 1) / 254.0f, (ColorLamp*360.0f) / 65535.0f,  Sat /254.0f,  out r, out g, out b);
+            return Color.FromArgb(255, Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b));
         }
+
 
         public void SetHSLValue(int h, int s, int b)
         {

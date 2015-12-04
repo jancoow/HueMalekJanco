@@ -1,4 +1,4 @@
-﻿<Page
+﻿ <Page
     x:Class="HueLamp.SettingsLamp"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -27,18 +27,18 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2">
-            <TextBlock FontSize="24">LightColors</TextBlock>
-            <Slider x:ConnectionId='4' Name="Hue" Maximum="65535"                                               />
+            <TextBlock FontSize="24">Brightnes</TextBlock>
+            <Slider x:ConnectionId='4' Name="Bri" Maximum="254"                                               />
         </StackPanel>
 
         <StackPanel Grid.Row="3">
-            <TextBlock FontSize="24">Saturation</TextBlock>
-            <Slider x:ConnectionId='3' Name="Sat" Maximum="254"                                                />
+            <TextBlock FontSize="24">LightColors</TextBlock>
+            <Slider x:ConnectionId='3' Name="Hue" Maximum="65535"                                                />
         </StackPanel>
 
         <StackPanel Grid.Row="4">
-            <TextBlock FontSize="24">Brightnes</TextBlock>
-            <Slider x:ConnectionId='2' Name="Bri" Maximum="254"                                               />
+            <TextBlock FontSize="24">Saturation</TextBlock>
+            <Slider x:ConnectionId='2' Name="Sat" Maximum="254"                                               />
         </StackPanel>
 
         <StackPanel Grid.Row="5">

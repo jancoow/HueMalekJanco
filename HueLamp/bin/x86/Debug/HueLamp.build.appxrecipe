@@ -9,16 +9,16 @@
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>6d8d602a-e4a7-445c-8cd4-a46c18e6ed3b</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\malek\Desktop\Project\HueLamp\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\obj\x86\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\malek\Desktop\Project\HueLamp\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\bin\x86\Debug\HueLamp.exe">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\HueLamp.exe">
       <PackagePath>entrypoint\HueLamp.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\malek\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
@@ -363,46 +363,46 @@
     <AppxPackagedFile Include="C:\Users\malek\.nuget\packages\template10\1.0.8\lib\uap10.0\Template10Library.dll">
       <PackagePath>Template10Library.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\ApplicationInsights.config">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\lamp_off.png">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\lamp_off.png">
       <PackagePath>lamp_off.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\lamp_on.png">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\lamp_on.png">
       <PackagePath>lamp_on.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\bin\x86\Debug\HueLamp.xr.xml">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\HueLamp.xr.xml">
       <PackagePath>HueLamp.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
@@ -426,10 +426,10 @@
     <AppxPackagedFile Include="C:\Users\malek\.nuget\packages\template10\1.0.8\lib\uap10.0\Template10Library\Themes\Generic.xaml">
       <PackagePath>Template10Library\Themes\Generic.xaml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\malek\Desktop\Project\HueLamp\bin\x86\Debug\Core\HueLamp.exe">
+    <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\Core\HueLamp.exe">
       <PackagePath>HueLamp.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
