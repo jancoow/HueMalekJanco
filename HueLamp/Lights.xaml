@@ -29,17 +29,18 @@
                                 <Button  Width="136" Height="136" Click="Button_Click">
                                     <StackPanel>
                                         <TextBlock Name="NameLamp" Text="{Binding name}" FontWeight="Bold" HorizontalAlignment="Center" ></TextBlock>
-                                        <Image Width="90" Height="90" Margin="0,10,0,0">
-                                            <i:Interaction.Behaviors>
-                                                <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="True" ComparisonCondition="Equal">
-                                                    <ic:ChangePropertyAction PropertyName="Source" Value="lamp_on.png"/>
-                                                </ic:DataTriggerBehavior>
-                                                <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="False" ComparisonCondition="Equal">
-                                                    <ic:ChangePropertyAction PropertyName="Source" Value="lamp_off.png"/>
-                                                </ic:DataTriggerBehavior>
-                                            </i:Interaction.Behaviors>
-
-                                        </Image>
+                                        <Border Width="90" Height="90" Margin="0,10,0,0" Background="{Binding ColorValue}">
+                                            <Image Stretch="Fill">
+                                                <i:Interaction.Behaviors>
+                                                    <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="True" ComparisonCondition="Equal">
+                                                        <ic:ChangePropertyAction PropertyName="Source" Value="lamp_on.png"/>
+                                                    </ic:DataTriggerBehavior>
+                                                    <ic:DataTriggerBehavior Binding="{Binding OnLamp}" Value="False" ComparisonCondition="Equal">
+                                                        <ic:ChangePropertyAction PropertyName="Source" Value="lamp_off.png"/>
+                                                    </ic:DataTriggerBehavior>
+                                                </i:Interaction.Behaviors>
+                                            </Image>
+                                        </Border>
                                     </StackPanel>
                                 </Button>
                             </Grid>

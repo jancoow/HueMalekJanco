@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI;
 
 namespace HueLamp
 {
@@ -26,6 +27,7 @@ namespace HueLamp
         public string name { get; set; }
         public string modelid;
         public string swversion;
+        private string colorValue;
 
         public HueLamp(HueHandler hh, string id, string OnLamp, string BrightnesLamp, string ColorLamp, string Sat, string x, string y,string CT,
             string alert, string effect, string colormode, string reachable, string type, string name, string modelid, string swversion)
@@ -69,6 +71,13 @@ namespace HueLamp
             ColorUtil.HsvToRgb((ColorLamp*360.0f) / 65535.0f, Sat/254.0f, (BrightnesLamp+1)/254.0f, out r, out g, out b);
         }
 
+        public Color getColor()
+        {
+            int r, g, b;
+            getRGBValue(out r, out g, out b);
+            return Color.FromArgb(255, (byte)(r), (byte)(g), (byte)(b));
+        }
+
         public void SetHSLValue(int h, int s, int b)
         {
             dynamic jsonObject = new JObject();
@@ -89,6 +98,11 @@ namespace HueLamp
             }
             String json = ((object)jsonObject).ToString();
             hh.sendLightCommando(id, json);
+        }
+
+        public string ColorValue
+        {
+            get { return getColor().ToString(); }
         }
     }
 
