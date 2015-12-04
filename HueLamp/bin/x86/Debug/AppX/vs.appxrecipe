@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-03T21:20:52.774</Modified>
+      <Modified>2015-12-04T09:54:28.631</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\HueLamp.exe">
       <PackagePath>entrypoint\HueLamp.exe</PackagePath>
-      <Modified>2015-12-03T21:20:52.082</Modified>
+      <Modified>2015-12-04T09:54:27.706</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\malek\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -538,7 +538,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\HueLamp.xr.xml">
       <PackagePath>HueLamp.xr.xml</PackagePath>
-      <Modified>2015-12-03T20:57:05.778</Modified>
+      <Modified>2015-12-04T09:49:56.913</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -570,11 +570,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-03T21:16:14.172</Modified>
+      <Modified>2015-12-04T09:54:28.436</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\malek\OneDrive\Documenten\SourceTree\Project\HueLamp\bin\x86\Debug\Core\HueLamp.exe">
       <PackagePath>HueLamp.exe</PackagePath>
-      <Modified>2015-12-03T21:20:52.769</Modified>
+      <Modified>2015-12-04T09:54:28.628</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

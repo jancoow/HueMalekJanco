@@ -17,7 +17,8 @@ namespace HueLamp
         public HueLamp hue;
         public HueHandler()
         {
-            nw = new NetworkHandler("localhost", "8000");
+           // nw = new NetworkHandler("hue.imegumii.space", "80");
+            nw = new NetworkHandler("Localhost", "8000");
             lamps = new ObservableCollection<HueLamp>();
             groups = new ObservableCollection<HueGroup>();
             InitLights();
@@ -69,6 +70,7 @@ namespace HueLamp
                         getKey(lamp, "modelid"),
                         getKey(lamp, "swversion")
                         ));
+                    
                 }
 
                 //groepen

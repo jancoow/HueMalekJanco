@@ -24,9 +24,12 @@ namespace HueLamp
     {
         HueHandler hh;
         public ProgressRing progress;
+        public string currentName { get; private set; }
         public Lights()
         {
             this.InitializeComponent();
+            this.currentName = currentName;
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -36,7 +39,10 @@ namespace HueLamp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(SettingsLamp),hh);
+            //Button b = sender as Button;
+            //currentName = ((b.Content as StackPanel).Children[0] as TextBlock).Text;
+            this.Frame.Navigate(typeof(SettingsLamp), hh);
+            
         }
     }
 }

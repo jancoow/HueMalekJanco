@@ -369,6 +369,7 @@ namespace HueLamp.HueLamp_XamlTypeInfo
             case 16:   //  HueLamp.Lights
                 userType = new global::HueLamp.HueLamp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_16_Lights;
+                userType.AddMemberName("currentName");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -390,6 +391,7 @@ namespace HueLamp.HueLamp_XamlTypeInfo
             case 19:   //  HueLamp.SettingsLamp
                 userType = new global::HueLamp.HueLamp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_19_SettingsLamp;
+                userType.AddMemberName("Colorutil");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -530,6 +532,16 @@ namespace HueLamp.HueLamp_XamlTypeInfo
             var that = (global::Microsoft.Xaml.Interactions.Core.ChangePropertyAction)instance;
             that.TargetObject = (global::System.Object)Value;
         }
+        private object get_9_Lights_currentName(object instance)
+        {
+            var that = (global::HueLamp.Lights)instance;
+            return that.currentName;
+        }
+        private object get_10_SettingsLamp_Colorutil(object instance)
+        {
+            var that = (global::HueLamp.SettingsLamp)instance;
+            return that.Colorutil;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -600,6 +612,18 @@ namespace HueLamp.HueLamp_XamlTypeInfo
                 xamlMember.SetIsDependencyProperty();
                 xamlMember.Getter = get_8_ChangePropertyAction_TargetObject;
                 xamlMember.Setter = set_8_ChangePropertyAction_TargetObject;
+                break;
+            case "HueLamp.Lights.currentName":
+                userType = (global::HueLamp.HueLamp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("HueLamp.Lights");
+                xamlMember = new global::HueLamp.HueLamp_XamlTypeInfo.XamlMember(this, "currentName", "String");
+                xamlMember.Getter = get_9_Lights_currentName;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "HueLamp.SettingsLamp.Colorutil":
+                userType = (global::HueLamp.HueLamp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("HueLamp.SettingsLamp");
+                xamlMember = new global::HueLamp.HueLamp_XamlTypeInfo.XamlMember(this, "Colorutil", "Object");
+                xamlMember.Getter = get_10_SettingsLamp_Colorutil;
+                xamlMember.SetIsReadOnly();
                 break;
             }
             return xamlMember;

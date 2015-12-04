@@ -10,11 +10,11 @@ namespace HueLamp
     class HueLamp
     {
         private HueHandler hh;
-        public string id;
+        public string id { get; set; }
         public Boolean OnLamp { get; set; }
-        public int BrightnesLamp;
-        public int ColorLamp;
-        public int Sat;
+        public int BrightnesLamp { get; set; }
+        public int ColorLamp { get; set; }
+        public int Sat { get; set; }
         public string x;
         public string y;
         public string CT;

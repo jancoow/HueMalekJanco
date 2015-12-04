@@ -10,15 +10,16 @@
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <RelativePanel>
-            <Button Name="HamburgerButton"
+            <RelativePanel>
+                <Button Name="HamburgerButton"
                     RelativePanel.AlignLeftWithPanel="True"
                    FontFamily="Segoe MDl2 Assets" 
                     FontSize="36"
@@ -26,50 +27,51 @@
                     Click="HamburgerButton_Click"
                     />
 
-            <Button Name="BackButton"
+                <Button Name="BackButton"
                     RelativePanel.RightOf="HamburgerButton"
                    FontFamily="Segoe MDl2 Assets" 
                     FontSize="36"
                     Content="&#xE0C4;"
                     Click="BackButton_Click"/>
 
-        </RelativePanel>
+            </RelativePanel>
 
-        <SplitView  Name="MySplitview" 
+            <SplitView  Name="MySplitview" 
                    Grid.Row="1"
                    DisplayMode="CompactOverlay"
                    OpenPaneLength="200"
                    CompactPaneLength="56">
-            <SplitView.Pane>
-                <ListBox SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
-                    <ListBoxItem Name="Lights">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xEA80;"/>
-                            <TextBlock FontSize="26" Margin="20,0,0,0">Lights</TextBlock>
-                        </StackPanel>
-                    </ListBoxItem>
+                <SplitView.Pane>
+                    <ListBox SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
+                        <ListBoxItem Name="Lights">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xEA80;"/>
+                                <TextBlock FontSize="26" Margin="20,0,0,0">Lights</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
 
-                    <ListBoxItem Name="Groups">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE71B;"/>
-                            <TextBlock FontSize="26" Margin="20,0,0,0">Groups</TextBlock>
-                        </StackPanel>
-                    </ListBoxItem>
+                        <ListBoxItem Name="Groups">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE71B;"/>
+                                <TextBlock FontSize="26" Margin="20,0,0,0">Groups</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
 
-                    <ListBoxItem Name="Settings">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE115;"/>
-                            <TextBlock FontSize="26" Margin="20,0,0,0">Settings</TextBlock>
-                        </StackPanel>
-                    </ListBoxItem>
-                </ListBox>
-            </SplitView.Pane>
+                        <ListBoxItem Name="Settings">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE115;"/>
+                                <TextBlock FontSize="26" Margin="20,0,0,0">Settings</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </SplitView.Pane>
 
-            <SplitView.Content>
-                <Frame Name="MyFrame">
-                </Frame>
-            </SplitView.Content>
-        </SplitView>
-        <ProgressRing Name="Progress" />
-    </Grid>
+                <SplitView.Content>
+                    <Frame Name="MyFrame">
+                    </Frame>
+                </SplitView.Content>
+            </SplitView>
+            <ProgressRing Name="Progress" />
+        </Grid>
+    </ScrollViewer>
 </Page>
