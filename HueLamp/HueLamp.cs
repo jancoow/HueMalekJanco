@@ -27,6 +27,7 @@ namespace HueLamp
         public string name { get; set; }
         public string modelid;
         public string swversion;
+        private string colorValue;
 
         public HueLamp(HueHandler hh, string id, string OnLamp, string BrightnesLamp, string ColorLamp, string Sat, string x, string y,string CT,
             string alert, string effect, string colormode, string reachable, string type, string name, string modelid, string swversion)
@@ -71,6 +72,12 @@ namespace HueLamp
             return Color.FromArgb(255, Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b));
         }
 
+        public Color getColor()
+        {
+            int r, g, b;
+            getRGBValue(out r, out g, out b);
+            return Color.FromArgb(255, (byte)(r), (byte)(g), (byte)(b));
+        }
 
         public void SetHSLValue(int h, int s, int b)
         {
@@ -92,6 +99,11 @@ namespace HueLamp
             }
             String json = ((object)jsonObject).ToString();
             hh.sendLightCommando(id, json);
+        }
+
+        public string ColorValue
+        {
+            get { return getColor().ToString(); }
         }
     }
 
