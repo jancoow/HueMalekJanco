@@ -121,6 +121,9 @@
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SettingsGroup.xaml.cs">
+      <DependentUpon>SettingsGroup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SettingsLamp.xaml.cs">
       <DependentUpon>SettingsLamp.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
     <Page Include="Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="SettingsLamp.xaml">
       <SubType>Designer</SubType>

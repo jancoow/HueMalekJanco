@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI;
 
 namespace HueLamp
 {
@@ -50,7 +51,10 @@ namespace HueLamp
             if (OnLamp != state)
             {
                 OnLamp = state;
-                hh.sendGroupCommando(id, "{\"on\":" + state + "}");
+                if (state)
+                    hh.sendGroupCommando(id, "{\"on\":true}");
+                else
+                    hh.sendGroupCommando(id, "{\"on\":false}");
             }
         }
         public void setRGBValue(float r, float g, float b)
@@ -60,9 +64,16 @@ namespace HueLamp
             SetHSLValue((int)((h / 360.0f) * 65535.0f), (int)s * 254, (int)v - 1);
         }
 
-        public void getRGBValue(out double r, out double g, out double b)
+        public void getRGBValue(out int r, out int g, out int b)
         {
-            ColorUtil.RGBtoHSV(ColorLamp, Sat, BrightnesLamp, out r, out g, out b);
+            ColorUtil.HsvToRgb((ColorLamp * 360.0f) / 65535.0f, (BrightnesLamp + 1) / 254.0f, Sat / 254.0f, out r, out g, out b);
+        }
+
+        public Color getColor()
+        {
+            int r, g, b;
+            getRGBValue(out r, out g, out b);
+            return Color.FromArgb(255, (byte)(r), (byte)(g), (byte)(b));
         }
 
         public void SetHSLValue(int h, int s, int b)
