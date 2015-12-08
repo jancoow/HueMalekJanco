@@ -23,6 +23,8 @@ namespace HueLamp
         public async Task<string> GetCommand(string url)
         {
             url = "http://" + ip + ":" + port + "/" + url;
+            System.Diagnostics.Debug.WriteLine(url);
+
             using (HttpClient hc = new HttpClient())
             {
                 try

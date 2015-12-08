@@ -56,20 +56,22 @@ namespace HueLamp
             if(OnLamp != state)
             {
                 OnLamp = state;
-                hh.sendLightCommando(id, "{\"on\":"+state+"}");
+                if(state)
+                    hh.sendLightCommando(id, "{\"on\":true}");
+                else
+                    hh.sendLightCommando(id, "{\"on\":false}");
             }
         }
         public void setRGBValue(float r, float g, float b)
         {
             double h, s, v;
             ColorUtil.RGBtoHSV(r, g, b, out h, out s, out v);
-            SetHSLValue( (int)s*254, (int)((h / 360.0f) * 65535.0f),(int)v - 1);
+            SetHSLValue((int)((h / 360.0f) * 65535.0f), (int)s * 254, (int)v - 1);
         }
 
-        public Color getRGBValue(out int r, out int g, out int b)
+        public void getRGBValue(out int r, out int g, out int b)
         {
-            ColorUtil.HsvToRgb((BrightnesLamp + 1) / 254.0f, (ColorLamp*360.0f) / 65535.0f,  Sat /254.0f,  out r, out g, out b);
-            return Color.FromArgb(255, Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b));
+            ColorUtil.HsvToRgb((ColorLamp * 360.0f) / 65535.0f, (BrightnesLamp + 1) / 254.0f, Sat /254.0f,  out r, out g, out b);
         }
 
         public Color getColor()
@@ -99,11 +101,6 @@ namespace HueLamp
             }
             String json = ((object)jsonObject).ToString();
             hh.sendLightCommando(id, json);
-        }
-
-        public string ColorValue
-        {
-            get { return getColor().ToString(); }
         }
     }
 

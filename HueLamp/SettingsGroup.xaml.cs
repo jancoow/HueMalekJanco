@@ -21,19 +21,19 @@ namespace HueLamp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SettingsLamp : Page
+    public sealed partial class SettingsGroup : Page
     {
-        HueLamp huelamp;
+        HueGroup huegroup;
         
-        public SettingsLamp()
+        public SettingsGroup()
         {
             this.InitializeComponent();
         }
 
         public void Slider_PointerCaptureLost(object sender, PointerRoutedEventArgs e)
         {
-            huelamp.setRGBValue((float)Red.Value,(float)Green.Value, (float)Blue.Value);
-            SolidColorBrush color = new SolidColorBrush(huelamp.getColor());
+            huegroup.setRGBValue((float)Red.Value,(float)Green.Value, (float)Blue.Value);
+            SolidColorBrush color = new SolidColorBrush(huegroup.getColor());
             ColorChanger.Fill = color;
         }
 
@@ -41,25 +41,25 @@ namespace HueLamp
         {
             if (SetOn.IsOn)
             {
-                huelamp.SetPower(true);
+                huegroup.SetPower(true);
             }
             else 
             {
-               huelamp.SetPower(false);
+                huegroup.SetPower(false);
             }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            huelamp = (HueLamp)e.Parameter;
-            NameLight.Text = huelamp.name;
+            huegroup = (HueGroup)e.Parameter;
+            NameLight.Text = huegroup.name;
             int r, g, b;
-            huelamp.getRGBValue(out r, out g, out b);
+            huegroup.getRGBValue(out r, out g, out b);
             Red.Value = r;
             Green.Value = g;
             Blue.Value = b;
-            SetOn.IsOn = huelamp.OnLamp;
-            SolidColorBrush color = new SolidColorBrush(huelamp.getColor());
+            SetOn.IsOn = huegroup.OnLamp;
+            SolidColorBrush color = new SolidColorBrush(huegroup.getColor());
             ColorChanger.Fill = color;
 
         }

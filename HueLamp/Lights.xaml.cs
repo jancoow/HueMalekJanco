@@ -41,7 +41,9 @@ namespace HueLamp
         {
             //Button b = sender as Button;
             //currentName = ((b.Content as StackPanel).Children[0] as TextBlock).Text;
-            this.Frame.Navigate(typeof(SettingsLamp), hh);
+            Button myButton = (Button)sender;
+            HueLamp hl = myButton.DataContext as HueLamp;
+            this.Frame.Navigate(typeof(SettingsLamp), hl);
             
         }
     }
