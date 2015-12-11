@@ -46,7 +46,7 @@ namespace HueLamp
             {
                huelamp.SetPower(false);
             }
-        }
+        } 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

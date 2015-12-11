@@ -66,12 +66,13 @@ namespace HueLamp
         {
             double h, s, v;
             ColorUtil.RGBtoHSV(r, g, b, out h, out s, out v);
-            SetHSLValue((int)((h / 360.0f) * 65535.0f), (int)s * 254, (int)v - 1);
+            SetHSLValue((int)((h / 360.0f) * 65535.0f), (int)(s * 254), (int)v - 1);
+            System.Diagnostics.Debug.WriteLine(h + " " + s + " " + v);
         }
 
         public void getRGBValue(out int r, out int g, out int b)
         {
-            ColorUtil.HsvToRgb((ColorLamp * 360.0f) / 65535.0f, (BrightnesLamp + 1) / 254.0f, Sat /254.0f,  out r, out g, out b);
+            ColorUtil.HsvToRgb((ColorLamp * 360.0f) / 65535.0f, Sat /254.0f, (BrightnesLamp + 1) / 254.0f,  out r, out g, out b);
         }
 
         public Color getColor()
