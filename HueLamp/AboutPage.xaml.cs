@@ -20,20 +20,11 @@ namespace HueLamp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Lights : Page
+    public sealed partial class AboutPage : Page
     {
-        HueHandler hh;
-
-        public Lights()
+        public AboutPage()
         {
             this.InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button myButton = (Button)sender;
-            HueLamp hl = myButton.DataContext as HueLamp;
-           this.Frame.Navigate(typeof(SettingsLamp), hl);
         }
     }
 }

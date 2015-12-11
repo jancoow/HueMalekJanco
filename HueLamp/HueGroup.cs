@@ -25,6 +25,7 @@ namespace HueLamp
         public string effect;
         public string colormode;
         public string reachable;
+
         public string name { get; set; }
 
         public HueGroup(HueHandler hh, String id, String OnLamp, String BrightnesLamp, String ColorLamp, String Sat, String x, String y, String CT, String alert, String effect, String ColorMode, String Reachable, String name, List<HueLamp> lamps)

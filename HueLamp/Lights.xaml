@@ -26,7 +26,7 @@
                     <ListView.ItemTemplate >
                         <DataTemplate >
                             <Grid x:Name="LampTile" Margin="6,6,6,20" >
-                                <Button  Width="136" Height="136" Click="Button_Click">
+                                <Button Width="136" Height="136" Click="Button_Click">
                                     <StackPanel>
                                         <TextBlock Name="NameLamp" Text="{Binding name}" FontWeight="Bold" HorizontalAlignment="Center" ></TextBlock>
                                             <Image Stretch="Fill">

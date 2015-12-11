@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -27,6 +28,7 @@ namespace HueLamp
         public AddHueGroup()
         {
             this.InitializeComponent();
+            hh = new HueHandler();
         }
 
         private void Toevoegen_Click(object sender, RoutedEventArgs e)

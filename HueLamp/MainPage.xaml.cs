@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,12 +26,25 @@ namespace HueLamp
     public sealed partial class MainPage : Page
     {
         HueHandler hh;
-        public MainPage()
+        Frame frame;
+        public MainPage(Frame frame)
         {
             hh = new HueHandler();
+            this.frame = frame;
             this.InitializeComponent();
             DataContext = new MainViewModel(hh);
-           
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+
+            SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
+            {
+                if (frame.CanGoBack)
+                {
+                    frame.GoBack();
+                    e.Handled = true;
+                    SetOfLights.IsChecked = true;
+                }
+            };
+            this.MySplitview.Content = frame;
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -38,37 +52,71 @@ namespace HueLamp
             MySplitview.IsPaneOpen = !MySplitview.IsPaneOpen;
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+      
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Lights.IsSelected)
+            MySplitview.IsPaneOpen = !MySplitview.IsPaneOpen;
+            ((RadioButton)sender).IsChecked = false;
+        }
+
+      
+        private void SetOfLights_Checked(object sender, RoutedEventArgs e)
+        {
+            MySplitview.IsPaneOpen = false;
+
+            if (((RadioButton)sender).IsChecked == true)
             {
-                MyFrame.Navigate(typeof(Lights), hh);
-                BackButton.Visibility = Visibility.Collapsed;
+                frame.Navigate(typeof(Lights));
             }
-            else if (Settings.IsSelected)
+            else
             {
-                MyFrame.Navigate(typeof(Settings), hh);
-                BackButton.Visibility = Visibility.Visible;
+                ((RadioButton)sender).IsChecked = false;
             }
-            else if (Groups.IsSelected)
+             
+        }
+
+        private void SettingsButton_Checked(object sender, RoutedEventArgs e)
+        {
+            MySplitview.IsPaneOpen = false;
+
+            if (((RadioButton)sender).IsChecked == true)
             {
-                MyFrame.Navigate(typeof(Groups), hh);
-                BackButton.Visibility = Visibility.Visible;
+                frame.Navigate(typeof(Settings));
+            }
+            else
+            {
+                ((RadioButton)sender).IsChecked = false;
             }
         }
 
-        public void BackButton_Click(object sender, RoutedEventArgs e)
-        { 
-            if (MyFrame.CanGoBack)
+        private void AboutButton_Checked(object sender, RoutedEventArgs e)
+        {
+            MySplitview.IsPaneOpen = false;
+
+            if (((RadioButton)sender).IsChecked == true)
             {
-               MyFrame.GoBack();
-               Lights.IsSelected = true;
+                frame.Navigate(typeof(AboutPage));
+            }
+            else
+            {
+                ((RadioButton)sender).IsChecked = false;
             }
         }
 
-        public void setBackButtonVissible()
+        private void GroupsButton_Checked(object sender, RoutedEventArgs e)
         {
-            BackButton.Visibility = Visibility.Visible;
+            MySplitview.IsPaneOpen = false;
+
+            if (((RadioButton)sender).IsChecked == true)
+            {
+                frame.Navigate(typeof(Groups));
+            }
+            else
+            {
+                ((RadioButton)sender).IsChecked = false;
+            }
+
         }
     }
 }

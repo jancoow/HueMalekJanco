@@ -35,8 +35,6 @@ namespace HueLamp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Button b = sender as Button;
-            //currentName = ((b.Content as StackPanel).Children[0] as TextBlock).Text;
             Button myButton = (Button)sender;
             HueGroup hl = myButton.DataContext as HueGroup;
             this.Frame.Navigate(typeof(SettingsGroup), hl);

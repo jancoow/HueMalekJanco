@@ -24,7 +24,6 @@ namespace HueLamp
     public sealed partial class SettingsLamp : Page
     {
         HueLamp huelamp;
-        
         public SettingsLamp()
         {
             this.InitializeComponent();
@@ -61,7 +60,6 @@ namespace HueLamp
             SetOn.IsOn = huelamp.OnLamp;
             SolidColorBrush color = new SolidColorBrush(huelamp.getColor());
             ColorChanger.Fill = color;
-
         }
     }
 }

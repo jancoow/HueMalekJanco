@@ -19,8 +19,8 @@ namespace HueLamp
         public HueLamp hue;
         public HueHandler()
         {
-            nw = new NetworkHandler("145.48.205.190", "80");
-            //nw = new NetworkHandler("Localhost", "8000");
+            //nw = new NetworkHandler("145.48.205.190", "80");
+            nw = new NetworkHandler("Localhost", "8000");
             lamps = new ObservableCollection<HueLamp>();
             groups = new ObservableCollection<HueGroup>();
             if(LOCAL_SETTINGS.Values["apikey"] != null)
@@ -28,29 +28,49 @@ namespace HueLamp
             InitLights();
         }
 
+        //public async Task<Boolean> createUser(string name)
+        //{
+        //    if (apikey == null) { 
+        //        JArray array = JArray.Parse(await nw.PostCommand("api", "  {  \"devicetype\":  \" " + name + " \"}  "));
+        //        if (array[0]["error"] != null)
+        //        {
+        //            System.Diagnostics.Debug.WriteLine("Error:" + array[0]["error"]["description"]);
+        //            return false;
+        //        }
+        //        else if (array[0]["success"] != null)
+        //        {
+        //            System.Diagnostics.Debug.WriteLine("Username key:" + array[0]["success"]["username"]);
+        //            apikey = array[0]["success"]["username"].ToString();
+        //            LOCAL_SETTINGS.Values["apikey"] = apikey;
+        //            return true;
+        //        }
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
+
         public async Task<Boolean> createUser(string name)
         {
-            if (apikey == null) { 
-                JArray array = JArray.Parse(await nw.PostCommand("api", "  {  \"devicetype\":  \" " + name + " \"}  "));
-                if (array[0]["error"] != null)
-                {
-                    System.Diagnostics.Debug.WriteLine("Error:" + array[0]["error"]["description"]);
-                    return false;
-                }
-                else if (array[0]["success"] != null)
-                {
-                    System.Diagnostics.Debug.WriteLine("Username key:" + array[0]["success"]["username"]);
-                    apikey = array[0]["success"]["username"].ToString();
-                    LOCAL_SETTINGS.Values["apikey"] = apikey;
-                    return true;
-                }
-                return false;
-            }
-            else
+            await nw.PostCommand("api", "  {  \"devicetype\":  \" " + name + " \"}  ");
+            JArray array = JArray.Parse(await nw.PostCommand("api", "  {  \"devicetype\":  \" " + name + " \"}  "));
+            if (array[0]["error"] != null)
             {
+                System.Diagnostics.Debug.WriteLine("Error:" + array[0]["error"]["description"]);
+                return false;
+                //Hier moet iets met de error gedaan worden
+            }
+            else if (array[0]["success"] != null)
+            {
+                System.Diagnostics.Debug.WriteLine("Username key:" + array[0]["success"]["username"]);
+                apikey = array[0]["success"]["username"].ToString();
                 return true;
             }
+            return false;
         }
+
 
         public async void InitLights()
         {
@@ -89,7 +109,7 @@ namespace HueLamp
                 jsonreturn = await nw.GetCommand("api/" + apikey + "/groups");
                 foreach (var i in JObject.Parse(jsonreturn))
                 {
-                    String groupinformation = await nw.GetCommand("api/" + apikey + "/groups/" + i.Key);
+                    string groupinformation = await nw.GetCommand("api/" + apikey + "/groups/" + i.Key);
                     JObject group = JObject.Parse(groupinformation);
                     JObject groupaction;
                     try {groupaction = JObject.Parse(group["action"].ToString()); } catch {groupaction = group; };
