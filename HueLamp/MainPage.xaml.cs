@@ -67,7 +67,7 @@ namespace HueLamp
 
             if (((RadioButton)sender).IsChecked == true)
             {
-                frame.Navigate(typeof(Lights));
+                frame.Navigate(typeof(Lights), hh);
             }
             else
             {
@@ -82,7 +82,7 @@ namespace HueLamp
 
             if (((RadioButton)sender).IsChecked == true)
             {
-                frame.Navigate(typeof(Settings));
+                frame.Navigate(typeof(Settings), hh);
             }
             else
             {
@@ -110,7 +110,7 @@ namespace HueLamp
 
             if (((RadioButton)sender).IsChecked == true)
             {
-                frame.Navigate(typeof(Groups));
+                frame.Navigate(typeof(Groups), hh);
             }
             else
             {

@@ -28,7 +28,6 @@ namespace HueLamp
         public AddHueGroup()
         {
             this.InitializeComponent();
-            hh = new HueHandler();
         }
 
         private void Toevoegen_Click(object sender, RoutedEventArgs e)
