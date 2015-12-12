@@ -23,8 +23,8 @@ namespace HueLamp
             nw = new NetworkHandler("Localhost", "8000");
             lamps = new ObservableCollection<HueLamp>();
             groups = new ObservableCollection<HueGroup>();
-            //if (LOCAL_SETTINGS.Values["apikey"] != null)
-             //   apikey = LOCAL_SETTINGS.Values["apikey"].ToString();
+            if (LOCAL_SETTINGS.Values["apikey"] != null)
+                apikey = LOCAL_SETTINGS.Values["apikey"].ToString();
             InitLights();
         }
 
@@ -36,7 +36,7 @@ namespace HueLamp
                 {
                     System.Diagnostics.Debug.WriteLine("Error:" + array[0]["error"]["description"]);
                     return false;
-                //Hier moet iets met de error gedaan worden
+                //Hier moet iets met de error gedaan worden (vaak is dit de linkbutton die niet gepressed is)
                 }
                 else if (array[0]["success"] != null)
                 {
@@ -49,7 +49,21 @@ namespace HueLamp
             }
             else
             {
-
+                try
+                {
+                    JArray array = JArray.Parse(await nw.GetCommand("api/" + apikey + "/lights"));
+                    if (array[0]["error"] != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Error:" + array[0]["error"]["description"]);
+                        apikey = null;
+                        return await createUser(name);
+                    }
+                }
+                catch
+                {
+                    //Geen array, dus geen error, dus api key is goed
+                    return true;
+                }
                 return true;
             }
         }
