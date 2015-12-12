@@ -45,14 +45,8 @@ namespace HueLamp
                 }
             };
             this.MySplitview.Content = frame;
-        }
 
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
-        {
-            MySplitview.IsPaneOpen = !MySplitview.IsPaneOpen;
         }
-
-      
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
@@ -117,6 +111,22 @@ namespace HueLamp
                 ((RadioButton)sender).IsChecked = false;
             }
 
+        }
+
+        private void MySplitviewPane_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (e.Cumulative.Translation.X > 50)
+            {
+                MySplitview.IsPaneOpen = true;
+            }
+        }
+
+        private void Grid_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (e.Cumulative.Translation.X < -50)
+            {
+                MySplitview.IsPaneOpen = false;
+            }
         }
     }
 }

@@ -302,4 +302,57 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+
+    <Style TargetType="RadioButton" x:Key="SplitViewMenuButtonStyleSeconde">
+        <Setter Property="Background" Value="{ThemeResource MenuButtonBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{ThemeResource SplitViewForegroundBrush}" />
+        <Setter Property="Padding" Value="1,4,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="48" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="20" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.Resources>
+                                <Style TargetType="Rectangle" x:Name="FocusVisual">
+                                    <Setter Property="Opacity" Value="0" />
+                                    <Setter Property="StrokeDashArray" Value="1,1" />
+                                    <Setter Property="StrokeEndLineCap" Value="Square" />
+                                </Style>
+                            </Grid.Resources>
+
+                            <!-- background -->
+                            <Grid x:Name="NotCheckedBackground" Grid.ColumnSpan="4">
+                                <Rectangle x:Name="PressedBackground" Visibility="Collapsed" Fill="{StaticResource MenuButtonPressedBackgroundBrush}"/>
+                                <Rectangle x:Name="HoverBackground" Visibility="Collapsed" Fill="{StaticResource MenuButtonHoverBackgroundBrush}"/>
+                            </Grid>
+                            <Grid x:Name="CheckedBackground" Grid.ColumnSpan="4" Visibility="Collapsed" Background="{StaticResource MenuButtonCheckedBackgroundBrush}">
+                                <Rectangle x:Name="CheckedPressedBackground" Visibility="Collapsed" Fill="{StaticResource MenuButtonCheckedPressedBackgroundBrush}"/>
+                                <Rectangle x:Name="CheckedHoverBackground" Visibility="Collapsed" Fill="{StaticResource MenuButtonCheckedHoverBackgroundBrush}"/>
+                            </Grid>
+
+                            <!-- focus -->
+                            <Rectangle x:Name="FocusVisualWhite" Stroke="{ThemeResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashOffset="1.5" Style="{StaticResource FocusVisual}" />
+                            <Rectangle x:Name="FocusVisualBlack" Stroke="{ThemeResource FocusVisualBlackStrokeThemeBrush}" StrokeDashOffset="0.5" Style="{StaticResource FocusVisual}" />
+
+                            <!-- glyph -->
+                            <TextBlock x:Name="Glyph" Text="&#xe700;" Style="{StaticResource SplitViewTextBlockStyle}" FontSize="{StaticResource SplitViewLargeNavFontSize}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
