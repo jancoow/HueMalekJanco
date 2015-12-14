@@ -53,6 +53,7 @@
         <CommandBar>
             <AppBarButton Click="AddGroup_Click" Icon="Add" Label="Add group" />
             <AppBarButton Icon="Refresh" Label="Refresh" />
+            <AppBarButton Icon="Delete" Label="Delete" Click="AppBarButton_Click" />
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

@@ -45,5 +45,10 @@ namespace HueLamp
         {
             hh = (HueHandler)e.Parameter;
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

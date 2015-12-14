@@ -27,8 +27,8 @@
 
                 <SplitView.Pane>
                     <StackPanel Name="MySplitviewPane" ManipulationMode="TranslateX"
-                            ManipulationCompleted="MySplitviewPane_ManipulationCompleted">
-                        <RadioButton Name="MenuButton2" Style="{StaticResource SplitViewMenuButtonStyle}"/>
+                            ManipulationCompleted="MySplitviewPane_ManipulationCompleted" Margin="0,50,0,0">
+                        
                         <!-- Search button -->
                         <RadioButton  Name="SetOfLights" Tag="&#xEA80;" Content="Hue-Lamp" Style="{StaticResource SplitViewNavButtonStyle}" Checked="SetOfLights_Checked" IsChecked="True"/>
 
