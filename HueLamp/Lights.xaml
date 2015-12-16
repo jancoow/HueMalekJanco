@@ -16,7 +16,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Vertical">
-                <TextBlock Text="Alle Hue-Lampen" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Microsoft YaHei UI" FontSize="24" />
                 <ListView ItemsSource="{Binding Path=Items}" Grid.Row="1" Margin="0,40,0,40">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>

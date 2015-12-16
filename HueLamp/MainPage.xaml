@@ -9,86 +9,91 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity" 
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
-    
+
     <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="SplitViewStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <Style x:Key="StackPanel" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="Icon" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="Margin" Value="0,5,0,0" />
+        </Style>
+
+        <Style x:Key="Text" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="Margin" Value="20,0,0,0" />
+        </Style>
     </Page.Resources>
 
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <SplitView x:Name="MySplitview" DisplayMode="CompactOverlay"
-               IsPaneOpen="False" CompactPaneLength="48" OpenPaneLength="200"
-               PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
+        <RelativePanel>
+            <Button RelativePanel.AlignLeftWithPanel="True" Name="MenuButton" Click="MenuButton_Click" VerticalAlignment="Stretch" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="28" Background="Transparent" />
 
-                <SplitView.Pane>
-                    <StackPanel Name="MySplitviewPane" ManipulationMode="TranslateX"
-                            ManipulationCompleted="MySplitviewPane_ManipulationCompleted" Margin="0,50,0,0">
-                        
-                        <!-- Search button -->
-                        <RadioButton  Name="SetOfLights" Tag="&#xEA80;" Content="Hue-Lamp" Style="{StaticResource SplitViewNavButtonStyle}" Checked="SetOfLights_Checked" IsChecked="True"/>
+            <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" FontWeight="Bold" FontFamily="Microsoft YaHei UI" FontSize="24"  Name="PageTitle" x:Uid="PageTitleDefault"/>
+        </RelativePanel>
 
-                        <!--Groups button-->
-                        <RadioButton Name="GroupsButton" Tag="&#xE923;" Content="Groups" Style="{StaticResource SplitViewNavButtonStyle}" Checked="GroupsButton_Checked"/>
+        <SplitView Grid.Row="1" Name="MySplitview" DisplayMode="Overlay" OpenPaneLength="200">
+            <SplitView.Pane>
+                <RelativePanel Name="MySplitviewPane" VerticalAlignment="Stretch"
+                      ManipulationMode="TranslateX"
+                      ManipulationCompleted="MySplitviewPane_ManipulationCompleted"
+                      Background="Transparent">
 
-                        <!-- Settings button -->
-                        <RadioButton  Name="SettingsButton" Tag="&#xE115;" Content="Settings" Style="{StaticResource SplitViewNavButtonStyle}" Checked="SettingsButton_Checked" />
+                    <ListBox SelectionMode="Single" 
+                         SelectionChanged="ListBox_SelectionChanged"
+                             Tapped="ListBox_Tapped">
+                        <ListBoxItem Name="ItemLights">
+                            <StackPanel Style="{StaticResource StackPanel}">
+                                <TextBlock Style="{StaticResource Icon}" FontSize="36" Text="&#xEA80;"/>
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Lights</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
 
-                        <!-- About button -->
-                        <RadioButton  Name="AboutButton" Tag="&#xE783;" Content="About" Style="{StaticResource SplitViewNavButtonStyle}" Checked="AboutButton_Checked" />
-                    </StackPanel>
-                </SplitView.Pane>
+                        <ListBoxItem Name="ItemGroups">
+                            <StackPanel Style="{StaticResource StackPanel}">
+                                <TextBlock Style="{StaticResource Icon}" FontSize="36" Text="&#xE923;"/>
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Groups</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
 
-                <SplitView.Content>
-                    <Grid>
-                        <!-- SplitViewOpener -->
-                        <Grid ManipulationMode="TranslateX"
+                        <ListBoxItem Name="ItemSettings">
+                            <StackPanel Style="{StaticResource StackPanel}">
+                                <TextBlock Style="{StaticResource Icon}" FontSize="36" Text="&#xE115;"/>
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Settings</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="ItemAbout">
+                            <StackPanel Style="{StaticResource StackPanel}">
+                                <TextBlock Style="{StaticResource Icon}" FontSize="36" Text="&#xE783;"/>
+                                <TextBlock FontSize="24" Margin="20,0,0,0">About</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </RelativePanel>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Grid>
+                    <Frame Name="MyFrame"/>
+
+                    <StackPanel ManipulationMode="TranslateX"
                           ManipulationCompleted="Grid_ManipulationCompleted"
-                          Width="150"
+                          Width="10"
                           Background="Transparent"
                           HorizontalAlignment="Left"
                           VerticalAlignment="Stretch">
-                        </Grid>
-                    </Grid>
-                </SplitView.Content>
-            </SplitView>
-        </ScrollViewer>
-
-        <RadioButton Name="MenuButton" Style="{StaticResource SplitViewMenuButtonStyleSeconde}" Click="MenuButton_Click" VerticalAlignment="Top" Background="Transparent" />
-        
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-
-                <VisualState x:Name="Wide">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="900" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="MySplitview.DisplayMode"
-                                Value="Inline" />
-                        <Setter Target="MySplitview.IsPaneOpen"
-                                Value="True" />
-                        <Setter Target="MenuButton.Visibility"
-                                Value="Collapsed" />
-                    </VisualState.Setters>
-                </VisualState>
-
-                <VisualState x:Name="Snapped">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="MySplitview.DisplayMode"
-                                Value="Overlay" />
-                        <Setter Target="MySplitview.IsPaneOpen"
-                                Value="False" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+                    </StackPanel>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>

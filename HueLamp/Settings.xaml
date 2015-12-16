@@ -27,24 +27,21 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <StackPanel HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="6">
-            <TextBlock Text="Settings" Grid.Row="0" FontSize="36"/>
-        </StackPanel>
         <!--Ip-->
         <StackPanel VerticalAlignment="Bottom" Grid.Row="1">
             <TextBlock Text="Ip:" Grid.Row="1" FontSize="20"/>
         </StackPanel>
-        <TextBox Name="AddIp" Grid.Row="2" Grid.ColumnSpan="6"/>
+        <TextBox Name="AddIp" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,20"/>
 
         <StackPanel VerticalAlignment="Bottom" Grid.Row="3">
             <TextBlock Text="Port:" Grid.Row="3" FontSize="20"/>
         </StackPanel>
-        <TextBox Name="AddPort" Grid.Row="4" Grid.ColumnSpan="6"/>
+        <TextBox Name="AddPort" Grid.Row="4" Grid.ColumnSpan="3" Margin="0,0,0,20"/>
 
         <StackPanel VerticalAlignment="Bottom" Grid.Row="5">
             <TextBlock Text="Username:" Grid.Row="5" FontSize="20"/>
         </StackPanel>
-        <TextBox Name="AddUsername" Grid.Row="6" Grid.ColumnSpan="6"/>
+        <TextBox Name="AddUsername" Grid.Row="6" Grid.ColumnSpan="6" Margin="0,0,0,20"/>
     </Grid>
 
     <Page.BottomAppBar>
