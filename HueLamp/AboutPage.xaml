@@ -7,8 +7,28 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock FontSize="16" Text="Name : Janco Kock" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <TextBlock FontSize="16" Margin="55,0,0,0"  Text="Malek Sediqi" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBlock FontSize="16" Text="Email : JancoKock@gmail.com" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <TextBlock FontSize="16" Margin="45,0,0,0" Text=" MalekSediqi17@gmail.com" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
     </Grid>
 
     <Page.BottomAppBar>

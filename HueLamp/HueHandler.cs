@@ -12,15 +12,17 @@ namespace HueLamp
     class HueHandler
     {
         public static ApplicationDataContainer LOCAL_SETTINGS = ApplicationData.Current.LocalSettings;
-        NetworkHandler nw;
+        public NetworkHandler nw;
         public ObservableCollection<HueLamp> lamps;
         public ObservableCollection<HueGroup> groups;
         string apikey;
         public HueLamp hue;
+        public string Ip { get; set; }
+        public string Port { get; set; }
         public HueHandler()
         {
-            //nw = new NetworkHandler("hue.imegumii.space", "80");
-            nw = new NetworkHandler("Localhost", "8000");
+            nw = new NetworkHandler("hue.imegumii.space", "80");
+           // nw = new NetworkHandler("Localhost","8000");
             lamps = new ObservableCollection<HueLamp>();
             groups = new ObservableCollection<HueGroup>();
             if (LOCAL_SETTINGS.Values["apikey"] != null)

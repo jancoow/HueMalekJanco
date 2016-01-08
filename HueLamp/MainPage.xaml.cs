@@ -32,12 +32,12 @@ namespace HueLamp
             this.InitializeComponent();
             DataContext = new MainViewModel(hh);
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
-            MyFrame.Navigate(typeof(Lights),hh);
             PageTitle.Text = "Alle Hue Lampen";
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                MyFrame.CanGoBack ?
                AppViewBackButtonVisibility.Visible :
                AppViewBackButtonVisibility.Collapsed;
+            MyFrame.Navigate(typeof(Lights), hh);
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
@@ -65,11 +65,6 @@ namespace HueLamp
             {
                 MyFrame.Navigate(typeof(Groups), hh);
                 PageTitle.Text = "Hue groepen";
-            }
-            else if (ItemSettings.IsSelected)
-            {
-                MyFrame.Navigate(typeof(Settings), hh);
-                PageTitle.Text = "Settings";
             }
             else if (ItemAbout.IsSelected)
             {

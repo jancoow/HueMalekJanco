@@ -12,8 +12,8 @@ namespace HueLamp
 {
     class NetworkHandler
     {
-        string ip;
-        string port;
+        public string ip { get; set; }
+        public string port { get; set; }
         public NetworkHandler(string ip, string port)
         {
             this.ip = ip;

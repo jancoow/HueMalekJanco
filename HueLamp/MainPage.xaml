@@ -63,14 +63,6 @@
                                 <TextBlock FontSize="24" Margin="20,0,0,0">Groups</TextBlock>
                             </StackPanel>
                         </ListBoxItem>
-
-                        <ListBoxItem Name="ItemSettings">
-                            <StackPanel Style="{StaticResource StackPanel}">
-                                <TextBlock Style="{StaticResource Icon}" FontSize="36" Text="&#xE115;"/>
-                                <TextBlock FontSize="24" Margin="20,0,0,0">Settings</TextBlock>
-                            </StackPanel>
-                        </ListBoxItem>
-
                         <ListBoxItem Name="ItemAbout">
                             <StackPanel Style="{StaticResource StackPanel}">
                                 <TextBlock Style="{StaticResource Icon}" FontSize="36" Text="&#xE783;"/>

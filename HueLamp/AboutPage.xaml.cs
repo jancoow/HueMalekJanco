@@ -25,6 +25,7 @@ namespace HueLamp
         public AboutPage()
         {
             this.InitializeComponent();
+     
         }
     }
 }
